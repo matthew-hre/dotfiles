@@ -1,0 +1,67 @@
+{
+  inputs = {
+    # Principle inputs (updated by `nix run .#update`)
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    nixos-flake.url = "github:srid/nixos-flake";
+
+    # Software inouts
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    kwin-effects-forceblur = {
+      url = "github:taj-ny/kwin-effects-forceblur";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+  outputs = inputs@{ self, ... }:
+    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" ];
+      imports = [ inputs.nixos-flake.flakeModule ];
+
+      flake =
+        let
+          myUserName = "matthew_hre";
+        in
+        {
+          nixosConfigurations = {
+            yoshi = self.nixos-flake.lib.mkLinuxSystem {
+            nixpkgs.hostPlatform = "x86_64-linux";
+
+            specialArgs = { inherit inputs; };
+
+            imports = [
+              ./configuration.nix
+              self.nixosModules.home-manager
+              {
+		home-manager.extraSpecialArgs = { inherit inputs; };
+                home-manager.users.${myUserName} = {
+                  imports = [ self.homeModules.default ];
+                  home.stateVersion = "22.11";
+                };
+              }
+            ];
+          };
+        };
+
+          homeModules.default = { pkgs, ... }: {
+            imports = [
+	      ./home/default.nix
+	    ];
+          };
+       };
+
+      perSystem = { pkgs, self', ...}: {
+        packages.default = self'.packages.activate;
+        devShells.default = pkgs.mkShell {
+	  buildInputs = [
+	    pkgs.nixpkgs-fmt
+	  ];
+	};
+        formatter = pkgs.nixpkgs-fmt;
+      }; 
+    };
+}

@@ -1,0 +1,95 @@
+{ flake, pkgs, inputs, ... }:
+{
+  imports = [
+    ./neovim.nix
+  ];
+  nix = {
+    # Which Nix version to use
+    # https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query=nix
+    # package = pkgs.nix;
+
+    # registry.nixpkgs.flake = flake.inputs.nixpkgs; # https://yusef.napora.org/blog/pinning-nixpkgs-flake/
+
+    # FIXME: Waiting for this to be merged:
+    # https://github.com/nix-community/home-manager/pull/4031
+    # nixPath = [ "nixpkgs=${flake.inputs.nixpkgs}" ]; # Enables use of `nix-shell -p ...` etc
+
+    # Garbage collect the Nix store
+    gc = {
+      automatic = true;
+      # Change how often the garbage collector runs
+      frequency = "monthly";
+    };
+  };
+
+  # Nix packages to install to $HOME
+  #
+  # Search for packages here: https://search.nixos.org/packages
+  home.packages = with pkgs; [
+    ripgrep
+    fd
+    sd
+    tree
+
+    # Nix dev
+    cachix
+    nil
+    nix-info
+    nixpkgs-fmt
+    # un-comment after `omnix` is upstreamed
+    # omnix
+    tmate
+    less
+  ];
+
+  home.shellAliases = {
+    g = "git";
+    lg = "lazygit";
+  };
+
+  # Programs natively supported by home-manager.
+  programs = {
+    zsh = {
+      enable = true;
+      autosuggestion.enable = true;
+      syntaxHighlighting.enable = true;
+      envExtra = ''
+        export PATH=/run/wrappers/bin/:/run/current-system/sw/bin/:/nix/var/nix/profiles/default/bin:$HOME/.nix-profile/bin:/etc/profiles/per-user/$USER/bin:$PATH
+      '';
+      shellAliases = {
+        ls = "exa -la --octal-permissions --git";
+        z = "zoxide";
+        cat = "bat";
+      };
+      oh-my-zsh = {
+        enable = true;
+        theme = "strug";
+        plugins = [
+          "git"
+          "npm"
+          "history"
+          "node"
+        ];
+      };
+    };
+    bat.enable = true;
+    zoxide.enable = true;
+    fzf.enable = true;
+    jq.enable = true;
+    # Install btop https://github.com/aristocratos/btop
+    btop.enable = true;
+
+    # https://nixos.asia/en/git
+    git = {
+      enable = true;
+      userName = "Matthew Hrehirchuk";
+      userEmail = "matthew_hre@outlook.com";
+      ignores = [ "*~" "*.swp" ];
+      extraConfig = {
+        # init.defaultBranch = "master";
+        # pull.rebase = "false";
+      };
+    };
+    lazygit.enable = true;
+  };
+}
