@@ -7,6 +7,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     ./shell/default.nix
+    ./nixvim/default.nix
   ];
 
   home.username = "matthew_hre";
@@ -70,10 +71,6 @@
     enable = true;
     userName = "Matthew Hrehirchuk";
     userEmail = "matthew_hre@outlook.com";
-  };
-
-  programs.nixvim = {
-    enable = true;
   };
 
   # This value determines the home Manager release that your
