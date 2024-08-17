@@ -4,7 +4,7 @@
   ...
 }: {
   imports = [
-    ./modules/neovim.nix
+    ./neovim.nix
   ];
 
   nix = {

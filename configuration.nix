@@ -1,10 +1,13 @@
-{ config, pkgs, lib, inputs, ... }:
-
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: {
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader
   boot = {
@@ -16,16 +19,16 @@
         efiSupport = true;
         efiInstallAsRemovable = true;
         device = "nodev";
-        useOSProber = true;	
+        useOSProber = true;
       };
     };
-    supportedFilesystems = [ "ntfs" ];
+    supportedFilesystems = ["ntfs"];
   };
 
   # System Hostname
   networking.hostName = "yoshi";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes"];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -120,7 +123,7 @@
     isNormalUser = true;
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
 
@@ -133,11 +136,8 @@
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
-    alacritty
     bat
     eza
-    fastfetch
-    fzf
     gh
     git
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
@@ -192,8 +192,8 @@
     _1password.enable = true;
     _1password-gui = {
       enable = true;
-      polkitPolicyOwners = [ "matthew_hre" ];
-    }; 
+      polkitPolicyOwners = ["matthew_hre"];
+    };
   };
 
   # Include fonts
@@ -201,7 +201,7 @@
     fira-code
     fira-code-symbols
     work-sans
-    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+    (nerdfonts.override {fonts = ["FiraCode"];})
   ];
 
   # Enable the OpenSSH daemon.

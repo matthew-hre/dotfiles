@@ -1,5 +1,4 @@
-{ flake, ... }:
-{
+{flake, ...}: {
   imports = [
     flake.inputs.nixvim.homeManagerModules.nixvim
   ];
@@ -8,7 +7,7 @@
     enable = true;
 
     # Theme
-    colorschemes.tokyonight.enable = true;
+    colorschemes.dracula.enable = true;
 
     # Settings
     opts = {
@@ -26,7 +25,6 @@
     };
 
     plugins = {
-
       # UI
       lualine.enable = true;
       bufferline.enable = true;
