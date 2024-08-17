@@ -4,12 +4,14 @@
   programs.nixvim = {
     enable = true;
 
-    options = {
+    globals.mapleader = " ";
+
+    opts = {
       relativenumber = true;
       incsearch = true;
     };
 
-    colorschemes.alabaster_dark.enable = true;
+    colorschemes.dracula.enable = true;
     plugins.lualine.enable = true;
     plugins.nix.enable = true;
 
@@ -23,6 +25,16 @@
     };
 
     plugins.lsp = {
+      enable = true;
+
+      servers = {
+        tsserver.enable = true;
+        html.enable = true;
+        nil-ls.enable = true;
+        eslint.enable = true;
+
+      };
+
       keymaps = {
         silent = true;
         diagnostic = {
@@ -36,5 +48,18 @@
         };
       };
     };
+
+    plugins.cmp = {
+      enable = true;
+      autoEnableSources = true;
+    };
+
+    plugins.oil.enable = true;
+
+    plugins.luasnip.enable = true;
+
+    plugins.neo-tree.enable = true;
+
+    plugins.which-key.enable = true;
   };
 }

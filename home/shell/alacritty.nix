@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      import = [pkgs.alacritty-theme.alabaster_dark];
+      import = [pkgs.alacritty-theme.dracula];
       window = {
         opacity = 0.8;
         blur = true;
