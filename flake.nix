@@ -20,14 +20,16 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
+    nixvim,
     alacritty-theme,
     ...
-  }: {
+  }: 
+  {
     nixosConfigurations = {
-      yoshi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+      system = "x86_64-linux";
 
-        specialArgs = {inherit inputs;};
+      yoshi = nixpkgs.lib.nixosSystem {        
+	specialArgs = { inherit inputs; };
 
         modules = [
           ./configuration.nix
@@ -38,17 +40,16 @@
           }: {
             nixpkgs.overlays = [alacritty-theme.overlays.default];
           })
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.matthew_hre = import ./home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
+	  home-manager.nixosModules.home-manager
+	  {
+	    home-manager.useGlobalPkgs = true;
+	    home-manager.useUserPackages = true;
+	    home-manager.extraSpecialArgs = { inherit inputs; };
+	    home-manager.users.matthew_hre = import ./home/default.nix;
+	  }
         ];
       };
     };
+    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
 }
