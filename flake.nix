@@ -23,13 +23,12 @@
     nixvim,
     alacritty-theme,
     ...
-  }: 
-  {
+  }: {
     nixosConfigurations = {
       system = "x86_64-linux";
 
-      yoshi = nixpkgs.lib.nixosSystem {        
-	specialArgs = { inherit inputs; };
+      yoshi = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
 
         modules = [
           ./configuration.nix
@@ -40,13 +39,13 @@
           }: {
             nixpkgs.overlays = [alacritty-theme.overlays.default];
           })
-	  home-manager.nixosModules.home-manager
-	  {
-	    home-manager.useGlobalPkgs = true;
-	    home-manager.useUserPackages = true;
-	    home-manager.extraSpecialArgs = { inherit inputs; };
-	    home-manager.users.matthew_hre = import ./home/default.nix;
-	  }
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.matthew_hre = import ./home/default.nix;
+          }
         ];
       };
     };

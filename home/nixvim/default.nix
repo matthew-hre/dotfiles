@@ -1,6 +1,4 @@
-{ config, ... }:
-
-{
+{config, ...}: {
   programs.nixvim = {
     enable = true;
 
@@ -32,7 +30,6 @@
         html.enable = true;
         nil-ls.enable = true;
         eslint.enable = true;
-
       };
 
       keymaps = {
@@ -44,7 +41,7 @@
 
         lspBuf = {
           gd = "definition";
-          K  = "hover";
+          K = "hover";
         };
       };
     };
