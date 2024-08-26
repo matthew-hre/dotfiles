@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  lib,
   inputs,
   ...
 }: {
@@ -19,7 +17,14 @@
         efiSupport = true;
         efiInstallAsRemovable = true;
         device = "nodev";
-        useOSProber = true;
+        extraEntries = ''
+          menuentry 'Windows Boot Manager (on /dev/nvme1n1p1)' --class windows --class os $menuentry_id_option 'osprober-efi-74E9-4770' {
+            insmod part_gpt
+            insmod fat
+            search --no-floppy --fs-uuid --set=root 74E9-4770
+            chainloader /efi/Microsoft/Boot/bootmgfw.efi
+          }
+        '';
       };
     };
     supportedFilesystems = ["ntfs"];
@@ -56,6 +61,7 @@
     sddm = {
       enable = true;
       wayland.enable = true;
+      theme = "where_is_my_sddm_theme";
     };
     defaultSession = "plasma";
   };
@@ -136,11 +142,10 @@
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
-    bat
-    eza
     gh
-    git
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    kdePackages.sddm-kcm
+    keepassxc
     lazygit
     nodejs_22
     spotify
@@ -148,11 +153,11 @@
       withOpenASAR = true;
       withVencord = true;
     })
-    usbutils
     vesktop
     vim
     vscode
     wget
+    where-is-my-sddm-theme
     zoxide
   ];
 
@@ -168,27 +173,6 @@
       localNetworkGameTransfers.openFirewall = true;
     };
     zsh.enable = true;
-    # zsh = {
-    #   enable = true;
-    #   enableCompletion = true;
-    #   autosuggestions.enable = true;
-    #   syntaxHighlighting.enable = true;
-    #   shellAliases = {
-    #     ls = "exa -la --octal-permissions --git";
-    #     z = "zoxide";
-    #     cat = "bat";
-    #   };
-    #   ohMyZsh = {
-    #     enable = true;
-    #     theme = "strug";
-    #     plugins = [
-    #       "git"
-    #       "npm"
-    #       "history"
-    #       "node"
-    #     ];
-    #   };
-    # };
     _1password.enable = true;
     _1password-gui = {
       enable = true;

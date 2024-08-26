@@ -8,7 +8,7 @@
       z = "zoxide";
       cat = "bat";
       lg = "lazygit";
-      rebuild = "sudo nixos-rebuild switch";
+      rebuild = "~/nix-config/nixos-rebuild.sh";
     };
     oh-my-zsh = {
       enable = true;

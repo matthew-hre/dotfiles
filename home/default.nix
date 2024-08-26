@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -8,6 +7,7 @@
     inputs.nixvim.homeManagerModules.nixvim
     ./shell/default.nix
     ./nixvim/default.nix
+    ./rofi.nix
   ];
 
   home.username = "matthew_hre";
@@ -16,6 +16,8 @@
   home.packages = with pkgs; [
     fastfetch
     nnn
+
+    bat
 
     zip
     xz
