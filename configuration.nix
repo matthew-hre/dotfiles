@@ -147,6 +147,7 @@
     kdePackages.sddm-kcm
     keepassxc
     lazygit
+    libnotify
     nodejs_22
     spotify
     (discord.override {
