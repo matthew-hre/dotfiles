@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.alacritty = {
     enable = true;
     settings = {
@@ -11,10 +7,15 @@
       window = {
         opacity = 0.8;
         blur = true;
+        dimensions = {
+          columns = 120;
+          lines = 50;
+        };
         padding = {
           x = 4;
           y = 4;
         };
+        decorations = "full";
       };
       font = {
         size = 12;
