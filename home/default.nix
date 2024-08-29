@@ -5,9 +5,11 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.spicetify-nix.homeManagerModules.default
     ./shell/default.nix
     ./nixvim/default.nix
-    ./rofi.nix
+    ./rofi/rofi.nix
+    ./spicetify.nix
   ];
 
   home.username = "matthew_hre";

@@ -2,29 +2,36 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    nixos-cli.url = "github:water-sucks/nixos";
-
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
 
     kwin-effects-forceblur = {
       url = "github:taj-ny/kwin-effects-forceblur";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-cli.url = "github:water-sucks/nixos";
+
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
+
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
-    nixpkgs,
+    alacritty-theme,
     home-manager,
+    nixpkgs,
     nixos-cli,
     nixvim,
-    alacritty-theme,
+    spicetify-nix,
     ...
   }: {
     nixosConfigurations = {
