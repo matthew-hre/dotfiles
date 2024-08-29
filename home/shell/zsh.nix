@@ -9,6 +9,7 @@
       cat = "bat";
       lg = "lazygit";
       rebuild = "~/nix-config/nixos-rebuild.sh";
+      ".." = "cd ..";
     };
     oh-my-zsh = {
       enable = true;

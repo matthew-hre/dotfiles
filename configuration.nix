@@ -192,6 +192,10 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  services.openvpn.servers = {
+    mruVPN = {config = ''config /home/matthew_hre/.config/openvpn/mruVPN.conf '';};
+  };
+
   # May need to switch this for games
   networking.firewall.enable = true;
 
