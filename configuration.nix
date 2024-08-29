@@ -159,7 +159,6 @@
     vscode
     wget
     where-is-my-sddm-theme
-    zoxide
   ];
 
   # Install apps system-wide
@@ -193,11 +192,15 @@
   services.openssh.enable = true;
 
   services.openvpn.servers = {
-    mruVPN = {config = ''config /home/matthew_hre/.config/openvpn/mruVPN.conf '';};
+    mruVPN = {
+      config = ''config /home/matthew_hre/.config/openvpn/mruVPN.conf '';
+    };
   };
 
   # May need to switch this for games
   networking.firewall.enable = true;
+
+  services.nixos-cli.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

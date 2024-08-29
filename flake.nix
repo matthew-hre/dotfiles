@@ -6,6 +6,8 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    nixos-cli.url = "github:water-sucks/nixos";
+
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -20,6 +22,7 @@
   outputs = inputs @ {
     nixpkgs,
     home-manager,
+    nixos-cli,
     nixvim,
     alacritty-theme,
     ...
@@ -32,15 +35,10 @@
 
         modules = [
           ./configuration.nix
-          ({
-            config,
-            pkgs,
-            ...
-          }: {
-            nixpkgs.overlays = [alacritty-theme.overlays.default];
-          })
           home-manager.nixosModules.home-manager
+          nixos-cli.nixosModules.nixos-cli
           {
+            nixpkgs.overlays = [alacritty-theme.overlays.default];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};

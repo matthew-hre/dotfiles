@@ -1,11 +1,10 @@
-{config, ...}: {
+{...}: {
   programs.zsh = {
     enable = true;
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     shellAliases = {
       ls = "eza -la --octal-permissions --git";
-      z = "zoxide";
       cat = "bat";
       lg = "lazygit";
       rebuild = "~/nix-config/nixos-rebuild.sh";
@@ -21,5 +20,10 @@
         "node"
       ];
     };
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }
