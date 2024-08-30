@@ -8,8 +8,8 @@
         opacity = 0.8;
         blur = true;
         dimensions = {
-          columns = 165;
-          lines = 40;
+          columns = 169;
+          lines = 42;
         };
         padding = {
           x = 4;
