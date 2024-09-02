@@ -149,6 +149,7 @@
     lazygit
     libnotify
     nodejs_22
+    obsidian
     spotify
     (discord.override {
       withOpenASAR = true;
