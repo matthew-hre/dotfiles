@@ -6,6 +6,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     inputs.spicetify-nix.homeManagerModules.default
+    ./fastfetch.nix
     ./shell/default.nix
     ./nixvim/default.nix
     ./rofi/rofi.nix
@@ -16,7 +17,6 @@
   home.homeDirectory = "/home/matthew_hre";
 
   home.packages = with pkgs; [
-    fastfetch
     nnn
 
     bat

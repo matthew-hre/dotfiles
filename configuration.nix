@@ -61,7 +61,7 @@
     sddm = {
       enable = true;
       wayland.enable = true;
-      theme = "where_is_my_sddm_theme";
+      theme = "breeze";
     };
     defaultSession = "plasma";
   };
@@ -159,7 +159,6 @@
     vim
     vscode
     wget
-    where-is-my-sddm-theme
   ];
 
   # Install apps system-wide

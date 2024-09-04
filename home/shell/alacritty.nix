@@ -12,8 +12,8 @@
           lines = 42;
         };
         padding = {
-          x = 4;
-          y = 4;
+          x = 8;
+          y = 8;
         };
         decorations = "full";
       };
