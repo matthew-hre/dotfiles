@@ -6,7 +6,7 @@
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
     inputs.spicetify-nix.homeManagerModules.default
-    ./fastfetch.nix
+    ./fastfetch/default.nix
     ./shell/default.nix
     ./nixvim/default.nix
     ./rofi/rofi.nix

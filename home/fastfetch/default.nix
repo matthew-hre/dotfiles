@@ -10,12 +10,12 @@
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
-        source = "./logo_yoshi.txt";
+        source = "/home/matthew_hre/nix-config/home/fastfetch/logo_yoshi.txt";
         color = {
           "1" = "green";
         };
         padding = {
-          top = 2;
+          top = 1;
           left = 4;
           right = 4;
         };
@@ -35,7 +35,7 @@
           {
             type = "custom";
             outputColor = "blue";
-            format = ''┌──────────── OS Information ────────────┐'';
+            format = ''┌────────────────── OS Information ─────────────────┐'';
           }
           {
             type = "title";
@@ -90,7 +90,7 @@
           {
             type = "custom";
             outputColor = "blue";
-            format = ''├───────── Hardware Information ─────────┤'';
+            format = ''├─────────────── Hardware Information ──────────────┤'';
           }
           {
             type = "display";
@@ -121,7 +121,7 @@
           {
             type = "custom";
             outputColor = "blue";
-            format = ''├───────── Software Information ─────────┤'';
+            format = ''├─────────────── Software Information ──────────────┤'';
           }
           {
             type = "wm";
@@ -141,7 +141,7 @@
           {
             type = "custom";
             outputColor = "blue";
-            format = ''├───────── Network Information ─────────┤'';
+            format = ''├─────────────── Network Information ───────────────┤'';
           }
           {
             type = "localip";
@@ -157,7 +157,7 @@
           {
             type = "custom";
             outputColor = "blue";
-            format = ''└────────────────────────────────────────┘'';
+            format = ''└───────────────────────────────────────────────────┘'';
           }
 
           "break"
