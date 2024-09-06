@@ -5,11 +5,11 @@
       env.TERM = "xterm-256color";
       import = [pkgs.alacritty-theme.dracula];
       window = {
-        opacity = 0.8;
+        opacity = 0.7;
         blur = true;
         dimensions = {
-          columns = 169;
-          lines = 42;
+          columns = 181;
+          lines = 47;
         };
         padding = {
           x = 8;

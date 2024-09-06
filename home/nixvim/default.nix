@@ -1,62 +1,92 @@
-{config, ...}: {
+{...}: {
   programs.nixvim = {
     enable = true;
 
+    opts = import ./config/options.nix;
+
     globals.mapleader = " ";
 
-    opts = {
-      relativenumber = true;
-      incsearch = true;
+    viAlias = true;
+    vimAlias = true;
+
+    clipboard = {
+      providers.xsel.enable = true;
+
+      register = "unnamedplus";
     };
 
-    colorschemes.dracula.enable = true;
-    plugins.lualine.enable = true;
-    plugins.nix.enable = true;
+    keymaps = [
+      {
+        mode = "v";
+        key = "<S-Tab>";
+        action = "<gv";
+        options.desc = "Unindent line";
+      }
+      {
+        mode = "v";
+        key = "<Tab>";
+        action = ">gv";
+        options.desc = "Indent line";
+      }
+      {
+        mode = "!";
+        key = "<C-l>";
+        action = "<c-g>u<Esc>[s1z=`]a<c-g>u";
+        options.desc = "Spell correct previous word";
+      }
+    ];
 
-    plugins.treesitter.enable = true;
+    colorschemes = import ./config/colorscheme.nix;
 
-    plugins.telescope.enable = true;
+    plugins = import ./plugins/default.nix;
 
-    plugins.harpoon = {
-      enable = true;
-      keymaps.addFile = "<leader>a";
-    };
+    # plugins.lualine.enable = true;
+    # plugins.nix.enable = true;
 
-    plugins.lsp = {
-      enable = true;
+    # plugins.treesitter.enable = true;
 
-      servers = {
-        tsserver.enable = true;
-        html.enable = true;
-        nil-ls.enable = true;
-        eslint.enable = true;
-      };
+    # plugins.telescope.enable = true;
 
-      keymaps = {
-        silent = true;
-        diagnostic = {
-          "<leader>k" = "goto_prev";
-          "<leader>j" = "goto_next";
-        };
+    # plugins.harpoon = {
+    #   enable = true;
+    #   keymaps.addFile = "<leader>a";
+    # };
 
-        lspBuf = {
-          gd = "definition";
-          K = "hover";
-        };
-      };
-    };
+    # plugins.lsp = {
+    # enable = true;
 
-    plugins.cmp = {
-      enable = true;
-      autoEnableSources = true;
-    };
+    # servers = {
+    #  tsserver.enable = true;
+    #  html.enable = true;
+    #  nil-ls.enable = true;
+    #   eslint.enable = true;
+    # };
 
-    plugins.oil.enable = true;
+    # keymaps = {
+    #  silent = true;
+    # diagnostic = {
+    #   "<leader>k" = "goto_prev";
+    #    "<leader>j" = "goto_next";
+    #   };
 
-    plugins.luasnip.enable = true;
+    #     lspBuf = {
+    #       gd = "definition";
+    #       K = "hover";
+    #     };
+    #   };
+    # };
 
-    plugins.neo-tree.enable = true;
+    # plugins.cmp = {
+    #   enable = true;
+    #   autoEnableSources = true;
+    # };
 
-    plugins.which-key.enable = true;
+    # plugins.oil.enable = true;
+
+    # plugins.luasnip.enable = true;
+
+    # plugins.neo-tree.enable = true;
+
+    # plugins.which-key.enable = true;
   };
 }

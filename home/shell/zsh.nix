@@ -9,6 +9,7 @@
       lg = "lazygit";
       rebuild = "~/nix-config/nixos-rebuild.sh";
       ".." = "cd ..";
+      tmux = "tmux -f ~/.config/tmux/tmux.conf";
     };
     oh-my-zsh = {
       enable = true;

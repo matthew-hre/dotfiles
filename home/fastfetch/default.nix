@@ -47,23 +47,6 @@
             };
           }
         ]
-        ++ lib.optionals pkgs.stdenv.isDarwin [
-          {
-            type = "os";
-            key = " ├─  ";
-            keyColor = "green";
-          }
-          {
-            type = "kernel";
-            key = " ├─  ";
-            keyColor = "green";
-          }
-          {
-            type = "packages";
-            key = " ├─  ";
-            keyColor = "green";
-          }
-        ]
         ++ lib.optionals pkgs.stdenv.isLinux [
           {
             type = "os";

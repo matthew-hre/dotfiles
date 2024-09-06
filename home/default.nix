@@ -10,7 +10,7 @@
     ./shell/default.nix
     ./nixvim/default.nix
     ./rofi/rofi.nix
-    ./spicetify.nix
+    ./spicetify/default.nix
   ];
 
   home.username = "matthew_hre";

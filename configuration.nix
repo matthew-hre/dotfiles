@@ -129,7 +129,7 @@
     isNormalUser = true;
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
     shell = pkgs.zsh;
   };
 
@@ -142,7 +142,9 @@
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
+    gcc
     gh
+    godot_4
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     kdePackages.sddm-kcm
     keepassxc
@@ -150,6 +152,7 @@
     libnotify
     nodejs_22
     obsidian
+    pnpm
     spotify
     (discord.override {
       withOpenASAR = true;
@@ -202,6 +205,8 @@
   networking.firewall.enable = true;
 
   services.nixos-cli.enable = true;
+
+  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
