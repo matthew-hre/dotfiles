@@ -75,6 +75,20 @@
     enable = true;
     userName = "Matthew Hrehirchuk";
     userEmail = "matthew_hre@outlook.com";
+    extraConfig = {
+      include = {
+        path = "/home/matthew_hre/.config/git/themes.gitconfig";
+      };
+      core = {pager = "delta";};
+      blame = {pager = "delta";};
+      delta = {
+        features = "line-numbers decorations";
+        hyperlinks = true;
+        syntax-theme = "Dracula";
+        plus-style = ''syntax "#003800"'';
+        minus-style = ''syntax "#3f0001"'';
+      };
+    };
   };
 
   # This value determines the home Manager release that your

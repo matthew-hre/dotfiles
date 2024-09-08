@@ -142,6 +142,7 @@
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
+    delta
     gcc
     gh
     godot_4
@@ -182,6 +183,8 @@
       polkitPolicyOwners = ["matthew_hre"];
     };
   };
+
+  programs.nix-ld.enable = true;
 
   # Include fonts
   fonts.packages = with pkgs; [

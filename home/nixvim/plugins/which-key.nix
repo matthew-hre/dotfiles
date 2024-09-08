@@ -3,11 +3,11 @@
 #in
 {
   enable = true;
-  icons.group = "";
-  window.border = "single";
+  settings.icons.group = "";
+  settings.win.border = "single";
 
   # Disable which-key when in neo-tree or telescope
-  disable.filetypes = [
+  settings.disable.ft = [
     "TelescopePrompt"
     "neo-tree"
     "neo-tree-popup"

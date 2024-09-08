@@ -23,6 +23,10 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    zjstatus = {
+      url = "github:dj95/zjstatus";
+    };
   };
 
   outputs = inputs @ {
@@ -30,8 +34,7 @@
     home-manager,
     nixpkgs,
     nixos-cli,
-    nixvim,
-    spicetify-nix,
+    zjstatus,
     ...
   }: {
     nixosConfigurations = {
@@ -45,7 +48,12 @@
           home-manager.nixosModules.home-manager
           nixos-cli.nixosModules.nixos-cli
           {
-            nixpkgs.overlays = [alacritty-theme.overlays.default];
+            nixpkgs.overlays = [
+              alacritty-theme.overlays.default
+              (final: prev: {
+                zjstatus = zjstatus.packages.${prev.system}.default;
+              })
+            ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = {inherit inputs;};

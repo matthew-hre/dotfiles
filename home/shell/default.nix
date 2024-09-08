@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./alacritty.nix
-    ./tmux.nix
+    ./zellij/default.nix
     ./zsh.nix
   ];
 
