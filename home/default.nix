@@ -7,6 +7,7 @@
     inputs.nixvim.homeManagerModules.nixvim
     inputs.spicetify-nix.homeManagerModules.default
     ./fastfetch/default.nix
+    ./hyprland/default.nix
     ./shell/default.nix
     ./nixvim/default.nix
     ./rofi/rofi.nix

@@ -55,21 +55,8 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   # Enable the Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
-
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "breeze";
-    };
-    defaultSession = "plasma";
-  };
-
-  # Disable some non-essential packages
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    kate
-  ];
+  programs.hyprland.enable = true;
+  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -146,8 +133,6 @@
     gcc
     gh
     godot_4
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
-    kdePackages.sddm-kcm
     keepassxc
     lazygit
     libnotify

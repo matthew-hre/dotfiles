@@ -9,7 +9,7 @@
     ];
     extraConfig = {
       modi = "drun,emoji";
-      font = "sans 28px";
+      font = "FiraCode Nerd Font 20px";
       display-drun = "Applications";
       drun-display-format = "{name}";
       cycle = false;

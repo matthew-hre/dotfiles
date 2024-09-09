@@ -21,6 +21,10 @@
       ];
     };
     initExtra = ''
+      if [[ "$(tty)" == "/dev/tty1" ]]; then
+        Hyprland > /dev/null 2>&1;
+      fi
+
       zellij_tab_name_update() {
         if [[ -n $ZELLIJ ]]; then
           tab_name='''

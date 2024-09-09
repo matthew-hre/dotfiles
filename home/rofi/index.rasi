@@ -22,9 +22,8 @@ configuration {
 
 #window {
     background-color: @background-color;
-    border:           3;
+    border:           0;
     border-radius:    6;
-    border-color:     @bordercolor;
     padding:          15;
 }
 #mainbox {
