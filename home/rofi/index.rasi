@@ -7,7 +7,7 @@ configuration {
 }
 
 * {
-    font: "FiraCode Nerd Font 24";
+    font: "FiraCode Nerd Font 18";
     foreground: #f8f8f2;
     background-color: #282a36;
     active-background: #6272a4;
@@ -22,10 +22,10 @@ configuration {
 
 #window {
     background-color: @background-color;
-    border:           3;
-    border-radius:    6;
-    border-color:     @bordercolor;
-    padding:          15;
+    background-opacity: 0.8;
+    border:           0;
+    border-radius:    0;
+    padding:          12;
 }
 #mainbox {
     border:  0;

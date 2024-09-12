@@ -56,6 +56,8 @@
             tab_active_fullscreen   "#[bg=$bg,fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{fullscreen_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
             tab_active_sync         "#[bg=$bg,fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{sync_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
 
+            tab_separator " "
+
             command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
             command_git_branch_format      "#[fg=$green] {stdout} "
             command_git_branch_interval    "10"
@@ -63,7 +65,7 @@
 
             datetime        "#[fg=$fg_muted,bold] {format} "
             datetime_format "%A, %-d %B, %Y ─ %-I:%M%p"
-            datetime_timezone "Canada/Edmonton"
+            datetime_timezone "America/Edmonton"
           }
         }
         children

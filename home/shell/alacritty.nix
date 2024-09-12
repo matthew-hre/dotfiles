@@ -8,12 +8,12 @@
         opacity = 0.7;
         blur = true;
         dimensions = {
-          columns = 181;
-          lines = 47;
+          columns = 185;
+          lines = 50;
         };
         padding = {
-          x = 8;
-          y = 8;
+          x = 16;
+          y = 16;
         };
         decorations = "full";
       };

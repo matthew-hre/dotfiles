@@ -184,8 +184,6 @@
     };
   };
 
-  programs.nix-ld.enable = true;
-
   # Include fonts
   fonts.packages = with pkgs; [
     fira-code
@@ -208,8 +206,6 @@
   networking.firewall.enable = true;
 
   services.nixos-cli.enable = true;
-
-  virtualisation.docker.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

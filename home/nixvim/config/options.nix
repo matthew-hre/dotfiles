@@ -5,6 +5,8 @@
 
   completeopt = ["menu" "menuone" "noselect"];
 
+  conceallevel = 1;
+
   confirm = true;
 
   copyindent = true;

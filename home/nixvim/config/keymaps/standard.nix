@@ -83,7 +83,7 @@ in [
   {
     mode = "v";
     key = "<S-Tab>";
-    action = "<gv";
+    action = "<0";
     options.desc = "Unindent line";
   }
   {
