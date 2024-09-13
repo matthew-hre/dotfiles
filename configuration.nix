@@ -66,6 +66,8 @@
     defaultSession = "plasma";
   };
 
+  services.journald.extraConfig = "SystemMaxUse=1G";
+
   # Disable some non-essential packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kate
