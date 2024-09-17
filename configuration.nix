@@ -131,7 +131,7 @@
     isNormalUser = true;
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
-    extraGroups = ["wheel" "networkmanager" "docker"];
+    extraGroups = ["wheel" "networkmanager"];
     shell = pkgs.zsh;
   };
 
@@ -161,9 +161,11 @@
       withOpenASAR = true;
       withVencord = true;
     })
+    texlive.combined.scheme-full
     vesktop
     vim
     vscode
+    warp-terminal
     wget
   ];
 
@@ -188,6 +190,7 @@
 
   # Include fonts
   fonts.packages = with pkgs; [
+    departure-mono
     fira-code
     fira-code-symbols
     work-sans
