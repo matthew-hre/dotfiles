@@ -8,7 +8,7 @@
         opacity = 0.7;
         blur = true;
         dimensions = {
-          columns = 185;
+          columns = 190;
           lines = 50;
         };
         padding = {
