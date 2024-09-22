@@ -53,10 +53,31 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   services.xserver.videoDrivers = ["nvidia"];
+  # services.xserver.displayManager.sddm.wayland.enable = true;
 
   # Enable the Desktop Environment.
+<<<<<<< HEAD
   programs.hyprland.enable = true;
   programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+=======
+  # services.desktopManager.plasma6.enable = true;
+
+  # services.displayManager = {
+  #   sddm = {
+  #     enable = true;
+  #     wayland.enable = true;
+  #     theme = "breeze";
+  #   };
+  # defaultSession = "plasma";
+  # };
+
+  services.journald.extraConfig = "SystemMaxUse=1G";
+
+  # Disable some non-essential packages
+  # environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #   kate
+  # ];
+>>>>>>> f23fdfd (take 2)
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -127,17 +148,30 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
     delta
     gcc
     gh
     godot_4
+<<<<<<< HEAD
+=======
+    hunspell
+    hunspellDicts.en_CA
+    hunspellDicts.en_US
+>>>>>>> f23fdfd (take 2)
     keepassxc
     lazygit
     libnotify
     nodejs_22
     obsidian
+<<<<<<< HEAD
+=======
+    pandoc
+    pavucontrol
+>>>>>>> f23fdfd (take 2)
     pnpm
     spotify
     (discord.override {
@@ -148,6 +182,9 @@
     vim
     vscode
     wget
+    xdg-desktop-portal-gtk
+    xdg-desktop-portal-wlr
+    xdg-desktop-portal-hyprland
   ];
 
   # Install apps system-wide

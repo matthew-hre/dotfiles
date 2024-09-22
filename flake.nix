@@ -7,9 +7,16 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+<<<<<<< HEAD
     hyprland = {
       url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     };
+=======
+    # kwin-effects-forceblur = {
+    #   url = "github:taj-ny/kwin-effects-forceblur";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+>>>>>>> f23fdfd (take 2)
 
     nixos-cli.url = "github:water-sucks/nixos";
 

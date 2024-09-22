@@ -12,6 +12,7 @@
     ./nixvim/default.nix
     ./rofi/rofi.nix
     ./spicetify/default.nix
+    ./waybar/default.nix
   ];
 
   home.username = "matthew_hre";

@@ -21,8 +21,23 @@
       ];
     };
     initExtra = ''
+<<<<<<< HEAD
       if [[ "$(tty)" == "/dev/tty1" ]]; then
         Hyprland > /dev/null 2>&1;
+=======
+      [[ $(tty) == /dev/tty1 ]]&&exec dbus-run-session Hyprland
+
+      if [[ -z "$ZELLIJ" ]]; then
+          if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+              zellij attach -c
+          else
+              zellij
+          fi
+
+          if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+              exit
+          fi
+>>>>>>> f23fdfd (take 2)
       fi
 
       zellij_tab_name_update() {
