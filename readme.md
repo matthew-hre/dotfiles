@@ -6,7 +6,7 @@
 
 |               | Wayland                 | 
 |---------------|-------------------------|
-| **Shell:**    | zsh + OhMyZsh           |
+| **Shell:**    | zsh + OhMyZsh + zellij  |
 | **WM:**       | KDE Plasma 6            |
 | **Editor:**   | NixVim                  |
 | **Terminal:** | Alacritty               |
