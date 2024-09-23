@@ -14,7 +14,7 @@
     nixd.enable = true;
     pyright.enable = true;
     sqls.enable = true;
-    tsserver.enable = true;
+    ts-ls.enable = true;
     yamlls.enable = true;
   };
 }

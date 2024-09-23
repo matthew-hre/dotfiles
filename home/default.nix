@@ -56,7 +56,6 @@
 
     glow
 
-    btop
     iotop
     iftop
 
@@ -79,8 +78,8 @@
       include = {
         path = "/home/matthew_hre/.config/git/themes.gitconfig";
       };
-      core = {pager = "delta";};
-      blame = {pager = "delta";};
+      core = {pager = "bat";};
+      blame = {pager = "bat";};
       delta = {
         features = "line-numbers decorations";
         hyperlinks = true;
@@ -88,6 +87,14 @@
         plus-style = ''syntax "#003800"'';
         minus-style = ''syntax "#3f0001"'';
       };
+    };
+  };
+
+  programs.btop = {
+    enable = true;
+    settings = {
+      color_theme = "Dracula";
+      theme_background = false;
     };
   };
 

@@ -59,13 +59,14 @@
   # Enable the Desktop Environment.
   services.desktopManager.plasma6.enable = true;
 
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      theme = "breeze";
+  services.greetd = {
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd startplasma-wayland";
+        user = "greeter";
+      };
     };
-    defaultSession = "plasma";
   };
 
   services.journald.extraConfig = "SystemMaxUse=1G";
@@ -146,8 +147,6 @@
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
-    delta
-    gcc
     gh
     godot_4
     hunspell
@@ -159,11 +158,8 @@
     lazygit
     libnotify
     libreoffice-qt
-    nodejs_22
     obsidian
     pandoc
-    pnpm
-    slides
     spotify
     (discord.override {
       withOpenASAR = true;
@@ -173,7 +169,6 @@
     vesktop
     vim
     vscode
-    warp-terminal
     wget
   ];
 
