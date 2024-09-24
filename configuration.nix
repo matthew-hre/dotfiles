@@ -74,6 +74,7 @@
   # Disable some non-essential packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kate
+    kdewallet
   ];
 
   # Configure keymap in X11
