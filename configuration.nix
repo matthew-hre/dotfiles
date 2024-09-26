@@ -35,7 +35,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -74,7 +74,6 @@
   # Disable some non-essential packages
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     kate
-    kdewallet
   ];
 
   # Configure keymap in X11
@@ -223,8 +222,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.05"; # Did you read the comment?
-
-  # Enable auto-upgrade
-  system.autoUpgrade.enable = true;
-  system.autoUpgrade.allowReboot = true;
 }

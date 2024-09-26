@@ -6,9 +6,14 @@
     shellAliases = {
       ls = "eza -la --octal-permissions --git";
       cat = "bat";
+      grep = "grep -n --color";
+      mkdir = "mkdir -pv";
       lg = "lazygit";
       rebuild = "~/nix-config/nixos-rebuild.sh";
       ".." = "cd ..";
+      ":q" = "exit";
+      weather = "curl -s v2.wttr.in/72034";
+      copy = "xclip -selection clipboard";
     };
     oh-my-zsh = {
       enable = true;
