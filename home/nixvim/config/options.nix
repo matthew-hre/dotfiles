@@ -5,7 +5,7 @@
 
   completeopt = ["menu" "menuone" "noselect"];
 
-  conceallevel = 1;
+  conceallevel = 2;
 
   confirm = true;
 
