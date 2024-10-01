@@ -4,20 +4,24 @@ configuration {
     disable-history: false;
 
     drun {
-      display-name: "";
+      display-name: " ";
+    }
+
+    emoji {
+      display-name: " ";
     }
 
     run {
-      display-name: "";
+      display-name: " ";
     }
 
     window {
-      display-name: "";
+      display-name: " ";
     }
 }
 
 * {
-    font: "Work Sans 18";
+    font: "FiraCode Nerd Font 18";
     
     bg: #282A36;
     bg-alt: #44475A;
@@ -36,6 +40,7 @@ configuration {
 window {
   transparency: "real";
   width: 700px;
+  border-radius: 16px;
 }
 
 mainbox {
@@ -48,6 +53,7 @@ inputbar {
 }
 
 entry {
+  font: "Work Sans 18";
   background-color: inherit;
   padding: 12px 3px;
 }
@@ -71,9 +77,16 @@ element-icon {
 }
 
 element-text {
+  font: "Work Sans 18";
   padding: 10px 0;
 }
 
-element-text selected {
-  text-color: @fg-alt;
+element-icon selected {
+  background-color: @fg-alt;
 }
+
+element-text selected {
+  background-color: @fg-alt;
+  text-color: @bg;
+}
+

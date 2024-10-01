@@ -169,7 +169,6 @@
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
-    gh
     godot_4
     hunspell
     hunspellDicts.en_CA
@@ -177,12 +176,12 @@
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     kdePackages.sddm-kcm
     keepassxc
-    lazygit
     libnotify
     libreoffice-qt
+    nomacs
     obsidian
     pandoc
-    spotify
+    prismlauncher
     (discord.override {
       withOpenASAR = true;
       withVencord = true;
@@ -191,7 +190,6 @@
     vesktop
     vim
     vscode
-    wget
   ];
 
   # Install apps system-wide

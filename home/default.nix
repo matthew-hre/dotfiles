@@ -51,6 +51,9 @@
     zstd
     gnupg
 
+    gh
+    lazygit
+
     alejandra
     nix-output-monitor
 
