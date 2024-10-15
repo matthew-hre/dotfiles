@@ -9,7 +9,7 @@
     ];
     extraConfig = {
       modi = "drun,emoji";
-      font = "sans 20px";
+      font = "sans 14px";
       display-drun = "Applications";
       drun-display-format = "{name}";
       cycle = false;

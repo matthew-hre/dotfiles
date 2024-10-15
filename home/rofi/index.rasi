@@ -21,7 +21,7 @@ configuration {
 }
 
 * {
-    font: "FiraCode Nerd Font 18";
+    font: "FiraCode Nerd Font 14";
     
     bg: #282A36;
     bg-alt: #44475A;
@@ -53,7 +53,7 @@ inputbar {
 }
 
 entry {
-  font: "Work Sans 18";
+  font: "Work Sans 14";
   background-color: inherit;
   padding: 12px 3px;
 }
@@ -77,7 +77,7 @@ element-icon {
 }
 
 element-text {
-  font: "Work Sans 18";
+  font: "Work Sans 14";
   padding: 10px 0;
 }
 

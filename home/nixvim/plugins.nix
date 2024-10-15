@@ -1,8 +1,5 @@
 {
   config,
-  isVm,
-  lib,
-  pkgs,
   ...
 }: {
   programs.nixvim = {
@@ -21,7 +18,7 @@
         };
       };
       nvim-autopairs.enable = true;
-      nvim-tree.enable = true;
+      neo-tree.enable = true;
       obsidian = {
         enable = true;
         settings = {

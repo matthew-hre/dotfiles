@@ -114,7 +114,7 @@ in {
     {
       key = "<leader>n";
       options.silent = true;
-      action = "<cmd>NvimTreeToggle<CR>";
+      action = "<cmd>Neotree toggle<CR>";
     }
   ];
 }

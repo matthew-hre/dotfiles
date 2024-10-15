@@ -10,14 +10,9 @@
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
-        source = "/home/matthew_hre/nix-config/home/fastfetch/logo_yoshi.txt";
+        type = "small";
         color = {
           "1" = "green";
-        };
-        padding = {
-          top = 1;
-          left = 4;
-          right = 4;
         };
       };
       display = {
@@ -28,123 +23,46 @@
         percent = {
           type = 9;
         };
-        separator = " 󰁔 ";
+        separator = " ";
       };
-      modules =
-        [
-          {
-            type = "custom";
-            outputColor = "blue";
-            format = ''┌────────────────── OS Information ─────────────────┐'';
-          }
-          {
-            type = "title";
-            key = " ╭─ ";
-            keyColor = "green";
-            color = {
-              user = "green";
-              host = "green";
-            };
-          }
-        ]
-        ++ lib.optionals pkgs.stdenv.isLinux [
-          {
-            type = "os";
-            key = " ├─ ";
-            keyColor = "green";
-          }
-          {
-            type = "kernel";
-            key = " ├─ ";
-            keyColor = "green";
-          }
-          {
-            type = "packages";
-            key = " ├─ ";
-            keyColor = "green";
-          }
-        ]
-        ++ [
-          {
-            type = "shell";
-            key = " ╰─  ";
-            keyColor = "green";
-          }
-          {
-            type = "custom";
-            outputColor = "blue";
-            format = ''├─────────────── Hardware Information ──────────────┤'';
-          }
-          {
-            type = "display";
-            key = " ╭─ 󰍹 ";
-            keyColor = "blue";
-            compactType = "original-with-refresh-rate";
-          }
-          {
-            type = "cpu";
-            key = " ├─ 󰍛 ";
-            keyColor = "blue";
-          }
-          {
-            type = "gpu";
-            key = " ├─  ";
-            keyColor = "blue";
-          }
-          {
-            type = "disk";
-            key = " ├─ 󱛟 ";
-            keyColor = "blue";
-          }
-          {
-            type = "memory";
-            key = " ╰─  ";
-            keyColor = "blue";
-          }
-          {
-            type = "custom";
-            outputColor = "blue";
-            format = ''├─────────────── Software Information ──────────────┤'';
-          }
-          {
-            type = "wm";
-            key = " ╭─  ";
-            keyColor = "yellow";
-          }
-          {
-            type = "terminal";
-            key = " ├─  ";
-            keyColor = "yellow";
-          }
-          {
-            type = "font";
-            key = " ╰─  ";
-            keyColor = "yellow";
-          }
-          {
-            type = "custom";
-            outputColor = "blue";
-            format = ''├─────────────── Network Information ───────────────┤'';
-          }
-          {
-            type = "localip";
-            key = " ╭─ 󰀂 ";
-            showIpv4 = true;
-            keyColor = "white";
-          }
-          {
-            type = "publicip";
-            key = " ╰─  ";
-            keyColor = "white";
-          }
-          {
-            type = "custom";
-            outputColor = "blue";
-            format = ''└───────────────────────────────────────────────────┘'';
-          }
-
-          "break"
-        ];
+      modules = [
+        {
+          type = "title";
+          format = "{user-name-colored}{at-symbol-colored}{host-name-colored}";
+        }
+        {
+          type = "os";
+          key = "os     ";
+          format = "{3}";
+          keyColor = "green";
+        }
+        {
+          type = "host";
+          key = "host   ";
+          format = "{1}";
+          keyColor = "green";
+        }
+        {
+          type = "kernel";
+          key = "kernel ";
+          keyColor = "green";
+        }
+        {
+          type = "uptime";
+          key = "uptime ";
+          keyColor = "green";
+        }
+        {
+          type = "packages";
+          key = "pkgs   ";
+          keyColor = "green";
+        }
+        {
+          type = "memory";
+          key = "memory ";
+          keyColor = "green";
+        }
+      ];
     };
   };
 }
