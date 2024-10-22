@@ -167,6 +167,9 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
+
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
     godot_4
@@ -174,22 +177,18 @@
     hunspellDicts.en_CA
     hunspellDicts.en_US
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
-    kdePackages.sddm-kcm
     keepassxc
     libnotify
     libreoffice-qt
     nomacs
     obsidian
-    pandoc
     prismlauncher
     (discord.override {
       withOpenASAR = true;
       withVencord = true;
     })
-    texlive.combined.scheme-full
     vesktop
     vim
-    vscode
   ];
 
   # Install apps system-wide
@@ -231,7 +230,9 @@
   };
 
   # May need to switch this for games
-  networking.firewall.enable = true;
+  networking.firewall = {
+    enable = true;
+  };
 
   services.nixos-cli.enable = true;
 

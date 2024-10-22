@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   programs.nixvim = {
     plugins = {
       bufferline.enable = true;

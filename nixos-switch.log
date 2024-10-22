@@ -1,28 +1,16 @@
 warning: Git tree '/home/matthew_hre/nix-config' is dirty
 building the system configuration...
 warning: Git tree '/home/matthew_hre/nix-config' is dirty
-trace: evaluation warning: matthew_hre profile: Nixvim: `plugins.web-devicons` was enabled automatically because the following plugins are enabled.
-This behaviour is deprecated. Please explicitly define `plugins.web-devicons.enable` or alternatively enable `plugins.mini.modules.icons` with `plugins.mini.mockDevIcons`.
-plugins.telescope
-plugins.neo-tree
-plugins.alpha
-
-these 6 derivations will be built:
-  /nix/store/2f43jrl80kz85cvnln96njxcxk9qdr8w-home-manager-files.drv
-  /nix/store/9v41dvrn5vcz81giyvvs3l6xqjfm4xgd-home-manager-generation.drv
-  /nix/store/44yifhk8kh4yl0azphrz3g9b3hafbj3f-unit-home-manager-matthew_hre.service.drv
-  /nix/store/wwv2mxzzlq3bhl0gvwingrmqbkipdv30-system-units.drv
-  /nix/store/mpikrx7zwj42m0amzpv2q0b63d72cbmd-etc.drv
-  /nix/store/hnxcsa98yzych8vvvl38k1l71cysrlj7-nixos-system-yoshi-24.11.20240921.9357f4f.drv
-building '/nix/store/2f43jrl80kz85cvnln96njxcxk9qdr8w-home-manager-files.drv'...
-building '/nix/store/9v41dvrn5vcz81giyvvs3l6xqjfm4xgd-home-manager-generation.drv'...
-building '/nix/store/44yifhk8kh4yl0azphrz3g9b3hafbj3f-unit-home-manager-matthew_hre.service.drv'...
-building '/nix/store/wwv2mxzzlq3bhl0gvwingrmqbkipdv30-system-units.drv'...
-building '/nix/store/mpikrx7zwj42m0amzpv2q0b63d72cbmd-etc.drv'...
-building '/nix/store/hnxcsa98yzych8vvvl38k1l71cysrlj7-nixos-system-yoshi-24.11.20240921.9357f4f.drv'...
+evaluation warning: The option `plugins.lsp.servers.ts-ls' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.ts_ls'.
+evaluation warning: The option `plugins.lsp.servers.nginx-language-server' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.nginx_language_server'.
+evaluation warning: The option `plugins.lsp.servers.java-language-server' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.java_language_server'.
+evaluation warning: The option `plugins.lsp.servers.docker-compose-language-service' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.docker_compose_language_service'.
+evaluation warning: matthew_hre profile: The option `plugins.lsp.servers.ts-ls' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.ts_ls'.
+evaluation warning: matthew_hre profile: The option `plugins.lsp.servers.nginx-language-server' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.nginx_language_server'.
+evaluation warning: matthew_hre profile: The option `plugins.lsp.servers.java-language-server' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.java_language_server'.
+evaluation warning: matthew_hre profile: The option `plugins.lsp.servers.docker-compose-language-service' defined in `/nix/store/2am3a6nkfgg7zf039735qdf05xqjcn18-source/home/nixvim/lsp.nix' has been renamed to `plugins.lsp.servers.docker_compose_language_service'.
 updating GRUB 2 menu...
 activating the configuration...
 setting up /etc...
 reloading user units for matthew_hre...
 restarting sysinit-reactivation.target
-restarting the following units: home-manager-matthew_hre.service
