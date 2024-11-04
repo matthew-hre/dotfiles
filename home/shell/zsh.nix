@@ -14,6 +14,8 @@
       ":q" = "exit";
       weather = "curl -s v2.wttr.in/72034";
       copy = "xclip -selection clipboard";
+      man = "tldr";
+      fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
     };
     oh-my-zsh = {
       enable = true;
@@ -43,7 +45,6 @@
       HISTSIZE=100000
       SAVEHIST=100000
       setopt appendhistory
-      export FZF_DEFAULT_OPTS='--color=fg:#f8f8f2,bg:#282a36,hl:#bd93f9 --color=fg+:#f8f8f2,bg+:#44475a,hl+:#bd93f9 --color=info:#ffb86c,prompt:#50fa7b,pointer:#ff79c6 --color=marker:#ff79c6,spinner:#ffb86c,header:#6272a4'
 
       zellij_tab_name_update() {
         if [[ -n $ZELLIJ ]]; then

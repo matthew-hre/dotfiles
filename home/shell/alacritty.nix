@@ -3,12 +3,12 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      import = [pkgs.alacritty-theme.dracula];
+      general.import = [pkgs.alacritty-theme.dracula];
       window = {
         opacity = 0.7;
         blur = true;
         dimensions = {
-          columns = 190;
+          columns = 192;
           lines = 50;
         };
         padding = {

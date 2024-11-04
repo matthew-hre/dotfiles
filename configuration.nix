@@ -35,7 +35,7 @@
 
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -63,7 +63,7 @@
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd startplasma-wayland";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd startplasma-wayland --asterisks --theme border=green;text=whit;prompt=green;time=green;action=purple;button=green;container=black;input=white";
         user = "greeter";
       };
     };
@@ -177,9 +177,11 @@
     hunspellDicts.en_CA
     hunspellDicts.en_US
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    kdePackages.kconfig
     keepassxc
     libnotify
     libreoffice-qt
+    nix-output-monitor
     nomacs
     obsidian
     prismlauncher
