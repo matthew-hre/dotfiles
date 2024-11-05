@@ -30,21 +30,17 @@
     supportedFilesystems = ["ntfs"];
   };
 
-  # System Hostname
-  networking.hostName = "yoshi";
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
-  # networking.wireless.enable = false; # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
-  networking.networkmanager.enable = true;
-  networking.networkmanager.wifi.powersave = false;
-  networking.networkmanager.wifi.scanRandMacAddress = false;
+  # System Hostname
+  networking = {
+    hostName = "yoshi";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+      wifi.scanRandMacAddress = false;
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "America/Edmonton";

@@ -3,7 +3,8 @@
     enable = true;
     settings = {
       env.TERM = "xterm-256color";
-      general.import = [pkgs.alacritty-theme.dracula];
+      import = [pkgs.alacritty-theme.dracula]; # remove later, rolled back for fix
+      # general.import = [pkgs.alacritty-theme.dracula];
       window = {
         opacity = 0.7;
         blur = true;
