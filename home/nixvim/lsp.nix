@@ -11,10 +11,10 @@ _: {
           java_language_server.enable = true;
           jsonls.enable = true;
           nixd = {
-            enable = true;
-            settings = {
-              diagnostic.suppress = ["sema-escaping-with"];
-            };
+          enable = true;
+          settings = {
+            diagnostic.suppress = ["sema-escaping-with"];
+          };
           };
           pyright.enable = true;
           sqls.enable = true;
