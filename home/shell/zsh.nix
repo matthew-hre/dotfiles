@@ -12,7 +12,7 @@
       rebuild = "~/nix-config/nixos-rebuild.sh";
       ".." = "cd ..";
       ":q" = "exit";
-      weather = "curl -s v2.wttr.in/72034";
+      weather = "curl -s v2.wttr.in";
       copy = "xclip -selection clipboard";
       man = "tldr";
       fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
@@ -60,8 +60,6 @@
 
       autoload -U add-zsh-hook
       add-zsh-hook precmd zellij_tab_name_update
-
-      export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview'
     '';
   };
 

@@ -59,9 +59,9 @@
             tab_separator " "
 
             command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
-            command_git_branch_format      "#[fg=$green] {stdout} "
-            command_git_branch_interval    "10"
-            command_git_branch_rendermode  "static"
+            command_git_branch_format      "#[fg=$fg] {stdout} "
+            command_git_branch_interval    "5"
+            command_git_branch_rendermode  "dynamic"
 
             datetime        "#[fg=$fg_muted,bold] {format} "
             datetime_format "%A, %-d %B, %Y ─ %-I:%M%p"
