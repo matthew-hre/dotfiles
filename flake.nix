@@ -2,8 +2,6 @@
   description = "NixOS configuration";
 
   inputs = {
-    alacritty-theme.url = "github:alexghr/alacritty-theme.nix";
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -31,7 +29,6 @@
   };
 
   outputs = inputs @ {
-    alacritty-theme,
     home-manager,
     nixpkgs,
     nixpkgs-dcd4151,
@@ -58,7 +55,6 @@
           nixos-cli.nixosModules.nixos-cli
           {
             nixpkgs.overlays = [
-              alacritty-theme.overlays.default
               (final: prev: {
                 zjstatus = zjstatus.packages.${prev.system}.default;
               })

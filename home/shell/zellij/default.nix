@@ -17,9 +17,9 @@
             color_orange "#FFB86C"
             color_purple "#BD93F9"
 
-            tab_sync_indicator       " "
-            tab_fullscreen_indicator " 󰊓"
-            tab_floating_indicator   " 󰹙"
+            tab_sync_indicator       "  "
+            tab_fullscreen_indicator " 󰊓 "
+            tab_floating_indicator   " 󰹙 "
 
             format_left   "{mode} #[fg=$fg_muted,bold]{session}"
             format_center "{tabs}"
@@ -34,7 +34,7 @@
             hide_frame_for_single_pane "true"
 
             mode_normal        "#[fg=$green]█#[fg=$green,bold] NORMAL#[fg=$green]"
-            mode_locked        "#[fg=$red]█#[fg=$red,bold] LOCKED #[fg=$red]"
+            mode_locked        "#[fg=$red]█#[fg=$red,bold] LOCKED  #[fg=$red]"
             mode_resize        "#[fg=$cyan]█#[fg=$cyan,bold] RESIZE#[fg=$blue]"
             mode_pane          "#[fg=$cyan]█#[fg=$cyan,bold] PANE#[fg=$blue]"
             mode_tab           "#[fg=$yellow]█#[fg=$yellow,bold] TAB#[fg=$yellow]"

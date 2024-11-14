@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./alacritty.nix
+    ./kitty.nix
     ./zellij/default.nix
     ./zsh.nix
   ];
@@ -8,7 +8,7 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     BROWSER = "firefox";
-    TERMINAL = "alacritty";
+    TERMINAL = "kitty";
 
     DELTA_PAGER = "less -R";
 
