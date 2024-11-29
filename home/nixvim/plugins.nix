@@ -15,6 +15,7 @@
         };
       };
       nvim-autopairs.enable = true;
+      neocord.enable = true;
       neo-tree.enable = true;
       obsidian = {
         enable = true;

@@ -48,13 +48,13 @@
             mode_prompt        "#[fg=$cyan]█#[fg=$cyan,bold] PROMPT#[fg=$blue]"
             mode_tmux          "#[fg=$purple]█#[fg=purple,bold] TMUX#[fg=$purple]"
 
-            tab_normal              "#[bg=$bg,fg=$fg_muted]█#[bg=$fg_muted,fg=$bg,bold]{index} #[bg=$bg_muted,fg=$fg_muted,bold] {name}{floating_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]█"
-            tab_normal_fullscreen   "#[bg=$bg,fg=$fg_muted]█#[bg=$fg_muted,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$fg_muted,bold] {name}{fullscreen_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]█"
-            tab_normal_sync         "#[bg=$bg,fg=$fg_muted]█#[bg=$fg_muted,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$fg_muted,bold] {name}{sync_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]█"
+            tab_normal              "#[bg=$fg_muted] #[bg=$fg_muted,fg=$bg,bold]{index} #[bg=$bg_muted,fg=$fg_muted,bold] {name}{floating_indicator}#[fg=$bg_muted,,bold]█"
+            tab_normal_fullscreen   "#[fg=$fg_muted]█#[bg=$fg_muted,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$fg_muted,bold] {name}{fullscreen_indicator}#[fg=$bg_muted,,bold]█"
+            tab_normal_sync         "#[fg=$fg_muted]█#[bg=$fg_muted,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$fg_muted,bold] {name}{sync_indicator}#[fg=$bg_muted,,bold]█"
 
-            tab_active              "#[bg=$bg,fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{floating_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
-            tab_active_fullscreen   "#[bg=$bg,fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{fullscreen_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
-            tab_active_sync         "#[bg=$bg,fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{sync_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
+            tab_active              "#[fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{floating_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
+            tab_active_fullscreen   "#[fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{fullscreen_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
+            tab_active_sync         "#[fg=$green]█#[bg=$green,fg=$bg,bold]{index} #[bg=$bg_muted,,fg=$green,bold] {name}{sync_indicator}#[bg=$bg_muted,,fg=$bg_muted,,bold]"
 
             tab_separator " "
 

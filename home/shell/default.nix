@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./ghostty.nix
     ./kitty.nix
     ./zellij/default.nix
     ./zsh.nix
@@ -12,8 +13,8 @@
 
     DELTA_PAGER = "less -R";
 
-    MANPAGER="sh -c 'col -bx | bat -l man -p'";
-    MANROFFOPT="-c";
+    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+    MANROFFOPT = "-c";
 
     ZELLIJ_AUTO_ATTACH = "true";
     ZELLIJ_AUTO_EXIT = "true";

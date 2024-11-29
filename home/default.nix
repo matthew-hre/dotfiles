@@ -5,13 +5,13 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    inputs.spicetify-nix.homeManagerModules.default
-    ./fastfetch/default.nix
-    ./shell/default.nix
+    inputs.nvf.homeManagerModules.default
+
+    ./fastfetch
+    ./shell
     ./nixvim/default.nix
     ./rofi/rofi.nix
-    ./spotify-tui/default.nix
-    # ./spicetify/default.nix
+    ./spotify-tui
   ];
 
   home.username = "matthew_hre";
@@ -68,8 +68,8 @@
     sysstat
     lm_sensors
     ethtool
-    pciutils # lspci
-    usbutils # lsusb
+    pciutils
+    usbutils
   ];
 
   programs.git = {

@@ -2,6 +2,13 @@
   description = "NixOS configuration";
 
   inputs = {
+    ghostty = {
+      url = "git+ssh://git@github.com/ghostty-org/ghostty";
+
+      inputs.nixpkgs-stable.follows = "nixpkgs";
+      inputs.nixpkgs-unstable.follows = "nixpkgs";
+    };
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -13,15 +20,11 @@
     nixos-cli.url = "github:water-sucks/nixos";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-dcd4151.url = "github:nixos/nixpkgs/dcd4151fd6178395fac82ac4c577b213cec67b4a";
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
-    spicetify-nix = {
-      url = "github:Gerg-L/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nvf.url = "github:notashelf/nvf";
 
     zjstatus = {
       url = "github:dj95/zjstatus";
@@ -29,31 +32,31 @@
   };
 
   outputs = inputs @ {
+    ghostty,
     home-manager,
     nixpkgs,
-    nixpkgs-dcd4151,
     nixos-cli,
+    nvf,
     zjstatus,
     ...
   }: {
     nixosConfigurations = {
-      yoshi = nixpkgs.lib.nixosSystem rec {
+      yoshi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        
+
         specialArgs = {
           inherit inputs;
-
-          pkgs-dcd4151 = import nixpkgs-dcd4151 {
-            inherit system;
-            config.allowUnfree = true;
-          };
         };
 
         modules = [
           ./configuration.nix
           home-manager.nixosModules.home-manager
           nixos-cli.nixosModules.nixos-cli
+          nvf.nixosModules.default
           {
+            environment.systemPackages = [
+              ghostty.packages.x86_64-linux.default
+            ];
             nixpkgs.overlays = [
               (final: prev: {
                 zjstatus = zjstatus.packages.${prev.system}.default;

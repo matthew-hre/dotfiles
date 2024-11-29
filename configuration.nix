@@ -1,6 +1,5 @@
 {
   pkgs,
-  pkgs-dcd4151,
   inputs,
   ...
 }: {
@@ -200,7 +199,6 @@
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
-      package = pkgs-dcd4151.steam;
     };
     zsh.enable = true;
     _1password.enable = true;

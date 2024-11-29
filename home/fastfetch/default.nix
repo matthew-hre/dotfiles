@@ -10,9 +10,12 @@
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
-        type = "small";
+        source = "/home/matthew_hre/nix-config/home/fastfetch/logo_nix.txt";
         color = {
-          "1" = "green";
+          "1" = "blue";
+        };
+        padding = {
+          top = 1;
         };
       };
       display = {
@@ -26,6 +29,10 @@
         separator = " ";
       };
       modules = [
+        {
+          type = "title";
+          format = " ";
+        }
         {
           type = "title";
           format = "{user-name-colored}{at-symbol-colored}{host-name-colored}";
