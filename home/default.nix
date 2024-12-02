@@ -7,6 +7,7 @@
     inputs.nixvim.homeManagerModules.nixvim
     inputs.nvf.homeManagerModules.default
 
+    # ./kde
     ./fastfetch
     ./shell
     ./nixvim/default.nix
