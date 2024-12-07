@@ -7,8 +7,9 @@
     inputs.nixvim.homeManagerModules.nixvim
 
     ./fastfetch
+    ./fuzzel
     ./shell
-    ./nixvim/default.nix
+    ./nixvim
     ./rofi/rofi.nix
     ./spotify-tui
   ];

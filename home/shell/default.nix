@@ -19,7 +19,7 @@
     ZELLIJ_AUTO_ATTACH = "true";
     ZELLIJ_AUTO_EXIT = "true";
 
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
 
     NIXOS_OZONE_WL = "1";
   };

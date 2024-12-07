@@ -71,9 +71,6 @@
         modules = [
           ./hosts/toad/configuration.nix
           home-manager.nixosModules.home-manager
-          nixos-cli.nixosModules.nixos-cli
-          nvf.nixosModules.default
-            # plasma-manager.homeManagerModules.plasma-manager
           {
             environment.systemPackages = [
               ghostty.packages.x86_64-linux.default

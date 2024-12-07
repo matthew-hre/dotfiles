@@ -20,7 +20,7 @@
       };
     };
   };
-  
+
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
   networking = {
@@ -113,6 +113,9 @@
     };
   };
 
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -121,10 +124,9 @@
     isNormalUser = true;
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     shell = pkgs.zsh;
   };
-
 
   users.defaultUserShell = pkgs.zsh;
 
@@ -135,17 +137,19 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  
+
   environment.systemPackages = with pkgs; [
     hunspell
     hunspellDicts.en_CA
     hunspellDicts.en_US
     inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
     kdePackages.kconfig
+    kde-rounded-corners
     libnotify
     libreoffice-qt
     nomacs
     obsidian
+    fprintd
     (discord.override {
       withOpenASAR = true;
       withVencord = true;
@@ -153,7 +157,6 @@
     vesktop
     vim
   ];
-
 
   programs = {
     firefox = {
@@ -195,8 +198,8 @@
     enable = true;
   };
 
-  services.nixos-cli.enable = true;
-
+  services.fprintd.enable = true;
+  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
 
   # List services that you want to enable:
 
@@ -216,5 +219,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
