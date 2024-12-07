@@ -11,10 +11,10 @@ _: {
           java_language_server.enable = true;
           jsonls.enable = true;
           nixd = {
-          enable = true;
-          settings = {
-            diagnostic.suppress = ["sema-escaping-with"];
-          };
+            enable = true;
+            settings = {
+              diagnostic.suppress = ["sema-escaping-with"];
+            };
           };
           pyright.enable = true;
           sqls.enable = true;
@@ -30,15 +30,36 @@ _: {
             "<leader>j" = "goto_next";
           };
           lspBuf = {
-            gd = "definition";
-            "<C-LeftMouse>" = "definition";
-            "<F2>" = "rename";
-            gD = "implementation";
-            ca = "code_action";
-            K = "hover";
+            gd = {
+              action = "definition";
+              desc = "Goto Definition";
+            };
+            gr = {
+              action = "references";
+              desc = "Goto References";
+            };
+            gD = {
+              action = "declaration";
+              desc = "Goto Declaration";
+            };
+            gI = {
+              action = "implementation";
+              desc = "Goto Implementation";
+            };
+            gT = {
+              action = "type_definition";
+              desc = "Type Definition";
+            };
+            "<leader>cr" = {
+              action = "rename";
+              desc = "Rename";
+            };
           };
         };
       };
+
+      lsp-lines.enable = true;
+
       conform-nvim = {
         enable = true;
         settings = {
@@ -46,15 +67,63 @@ _: {
             lspFallback = true;
             timeoutMs = 500;
           };
+          notify_on_error = true;
+
           formatters_by_ft = {
+            html = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            css = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            java = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            javascript = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            javascriptreact = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            typescript = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
+            typescriptreact = [
+              [
+                "prettierd"
+                "prettier"
+              ]
+            ];
             python = ["black"];
-            # lua = [ "stylua" ];
-            nix = ["nixfmt"];
+            lua = ["stylua"];
+            nix = ["alejandra"];
             markdown = [
               [
                 "prettierd"
                 "prettier"
               ]
+            ];
+            yaml = [
+              "yamllint"
+              "yamlfmt"
             ];
           };
         };
@@ -64,6 +133,7 @@ _: {
         symbolMap = {
           Copilot = "";
         };
+
         extraOptions = {
           maxwidth = 50;
           ellipsis_char = "...";

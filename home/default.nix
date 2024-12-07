@@ -5,9 +5,7 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
-    inputs.nvf.homeManagerModules.default
 
-    # ./kde
     ./fastfetch
     ./shell
     ./nixvim/default.nix
@@ -41,7 +39,6 @@
     nmap
     ipcalc
 
-    cowsay
     file
     which
     tree

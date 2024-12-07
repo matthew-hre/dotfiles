@@ -17,20 +17,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixos-cli.url = "github:water-sucks/nixos";
-
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
-    nvf.url = "github:notashelf/nvf";
-
-    plasma-manager = {
-      url = "github:nix-community/plasma-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
 
     zjstatus = {
       url = "github:dj95/zjstatus";
@@ -41,9 +31,6 @@
     ghostty,
     home-manager,
     nixpkgs,
-    nixos-cli,
-    nvf,
-    plasma-manager,
     zjstatus,
     ...
   }: {
@@ -58,9 +45,6 @@
         modules = [
           ./hosts/yoshi/configuration.nix
           home-manager.nixosModules.home-manager
-          nixos-cli.nixosModules.nixos-cli
-          nvf.nixosModules.default
-            # plasma-manager.homeManagerModules.plasma-manager
           {
             environment.systemPackages = [
               ghostty.packages.x86_64-linux.default

@@ -35,7 +35,7 @@ in {
         theme = "${ghosttyTheme}";
         window-decoration = false;
         window-padding-x = 16;
-        window-padding-y = 12;
+        window-padding-y = 16;
       };
   };
 }
