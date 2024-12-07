@@ -61,6 +61,35 @@
           }
         ];
       };
+      toad = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          inherit inputs;
+        };
+
+        modules = [
+          ./hosts/toad/configuration.nix
+          home-manager.nixosModules.home-manager
+          nixos-cli.nixosModules.nixos-cli
+          nvf.nixosModules.default
+            # plasma-manager.homeManagerModules.plasma-manager
+          {
+            environment.systemPackages = [
+              ghostty.packages.x86_64-linux.default
+            ];
+            nixpkgs.overlays = [
+              (final: prev: {
+                zjstatus = zjstatus.packages.${prev.system}.default;
+              })
+            ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.users.matthew_hre = import ./home/default.nix;
+          }
+        ];
+      };
     };
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };

@@ -9,5 +9,5 @@
 | **Shell:**    | zsh + OhMyZsh + zellij  |
 | **WM:**       | KDE Plasma 6 + Karousel |
 | **Editor:**   | VSCode + NixVim         |
-| **Terminal:** | Kitty                   |
-| **Browser:**  | firefox                 |
+| **Terminal:** | Ghostty Private Beta    |
+| **Browser:**  | Firefox w/ Custom CSS   |
