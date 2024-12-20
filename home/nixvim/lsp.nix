@@ -7,9 +7,13 @@ _: {
           bashls.enable = true;
           cssls.enable = true;
           eslint.enable = true;
+          gopls.enable = true;
           html.enable = true;
           java_language_server.enable = true;
           jsonls.enable = true;
+          lua_ls = {
+            enable = true;
+          };
           nixd = {
             enable = true;
             settings = {
@@ -140,5 +144,41 @@ _: {
         };
       };
     };
+    extraConfigLua = ''
+      require'lspconfig'.lua_ls.setup {
+        on_init = function(client)
+          if client.workspace_folders then
+            local path = client.workspace_folders[1].name
+            if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+              return
+            end
+          end
+
+          client.config.settings.Lua = vim.tbl_deep_extend('force', client.config.settings.Lua, {
+            runtime = {
+              version = 'LuaJIT'
+            },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                "''${3rd}/love/library",
+                "''${3rd}/love2d/library"
+              }
+            }
+          })
+        end,
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                "''${3rd}/love/library",
+                "''${3rd}/love2d/library"
+              }
+            }
+          }
+        }
+      }
+    '';
   };
 }

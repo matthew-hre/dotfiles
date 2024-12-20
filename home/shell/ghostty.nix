@@ -32,6 +32,7 @@ in {
         font-style = "Medium";
         minimum-contrast = 1.1;
         # term = "xterm-kitty";
+        shell-integration = "none";
         theme = "${ghosttyTheme}";
         window-decoration = false;
         window-padding-x = 16;

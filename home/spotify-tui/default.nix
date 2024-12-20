@@ -1,7 +1,4 @@
-{
-  pkgs, ...
-}:
-let
+{pkgs, ...}: let
   spotify-player = pkgs.spotify-player.override {
     withStreaming = true;
     withDaemon = true;
@@ -12,8 +9,7 @@ let
     withSixel = false;
     withFuzzy = true;
   };
-in
-{
+in {
   programs.spotify-player = {
     enable = true;
     package = spotify-player;

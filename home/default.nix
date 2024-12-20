@@ -1,16 +1,18 @@
 {
+  config,
   pkgs,
   inputs,
   ...
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.niri.homeModules.niri
 
     ./fastfetch
     ./fuzzel
     ./shell
+    ./niri
     ./nixvim
-    ./rofi/rofi.nix
     ./spotify-tui
   ];
 

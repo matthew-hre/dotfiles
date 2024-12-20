@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  lib,
   ...
 }: {
   imports = [
@@ -17,6 +18,9 @@
         efiSupport = true;
         efiInstallAsRemovable = true;
         device = "nodev";
+        gfxmodeEfi = "2880x1920";
+        font = "${pkgs.nerd-fonts.fira-code}/share/fonts/truetype/NerdFonts/FiraCode/FiraCodeNerdFontMono-Regular.ttf";
+        fontSize = 24;
       };
     };
   };
@@ -38,18 +42,40 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
-  services.xserver.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
+
+  specialisation = {
+    hyprland = {
+      configuration = {
+        # Enable Hyprland
+        programs.hyprland.enable = true;
+
+        services.greetd.settings.default_session.command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r -cmd Hyprland --asterisks --theme border=green;text=white;prompt=green;time=green;action=purple;button=green;container=black;input=white";
+      };
+    };
+    niri = {
+      configuration = {
+        environment.systemPackages = [
+          pkgs.swww
+        ];
+
+        programs.niri = {
+          enable = true;
+          package = pkgs.niri;
+        };
+        services.greetd.settings.default_session.command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r -cmd Niri --asterisks --theme border=green;text=white;prompt=green;time=green;action=purple;button=green;container=black;input=white";
+
+        services.desktopManager.plasma6.enable = lib.mkDefault false;
+      };
+    };
+  };
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd startplasma-wayland --asterisks --theme border=green;text=whit;prompt=green;time=green;action=purple;button=green;container=black;input=white";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd startplasma-wayland --asterisks --theme border=green;text=white;prompt=green;time=green;action=purple;button=green;container=black;input=white";
         user = "greeter";
       };
     };
@@ -112,6 +138,8 @@
       CPU_MAX_PERF_ON_BAT = 75;
     };
   };
+
+  services.fwupd.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
