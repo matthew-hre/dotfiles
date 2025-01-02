@@ -29,38 +29,38 @@
     };
     initExtra = ''
 
-      if [[ -z "$ZELLIJ" ]]; then
-           if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
-               zellij attach -c
-           else
-               zellij
-           fi
+      #       if [[ -z "$ZELLIJ" ]]; then
+       #           if [[ "$ZELLIJ_AUTO_ATTACH" == "true" ]]; then
+      #                zellij attach -c
+      #            else
+      #                zellij
+      #            fi
 
-           if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-               exit
-           fi
-      fi
+            #      if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+            #          exit
+            #      fi
+            # fi
 
-      source <(fzf --zsh)
-      HISTFILE=~/.zsh_history
-      HISTSIZE=100000
-      SAVEHIST=100000
-      setopt appendhistory
+            source <(fzf --zsh)
+            HISTFILE=~/.zsh_history
+            HISTSIZE=100000
+            SAVEHIST=100000
+            setopt appendhistory
 
-      zellij_tab_name_update() {
-        if [[ -n $ZELLIJ ]]; then
-          tab_name=$(basename "$PWD")
-          if [[ $PWD == $HOME ]]; then
-              tab_name="~"
-          else
-              tab_name=''${tab_name}
-          fi
-          command nohup zellij action rename-tab "$tab_name" >/dev/null 2>&1
-        fi
-      }
+            zellij_tab_name_update() {
+              if [[ -n $ZELLIJ ]]; then
+                tab_name=$(basename "$PWD")
+                if [[ $PWD == $HOME ]]; then
+                    tab_name="~"
+                else
+                    tab_name=''${tab_name}
+                fi
+                command nohup zellij action rename-tab "$tab_name" >/dev/null 2>&1
+              fi
+            }
 
-      autoload -U add-zsh-hook
-      add-zsh-hook precmd zellij_tab_name_update
+            autoload -U add-zsh-hook
+            add-zsh-hook precmd zellij_tab_name_update
     '';
   };
 

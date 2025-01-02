@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -10,6 +9,7 @@
 
     ./fastfetch
     ./fuzzel
+    ./helix
     ./shell
     ./niri
     ./nixvim
