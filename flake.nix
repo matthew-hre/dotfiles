@@ -24,6 +24,8 @@
     nixvim.url = "github:nix-community/nixvim";
     nixvim.inputs.nixpkgs.follows = "nixpkgs";
 
+    nvf.url = "github:notashelf/nvf";
+
     zjstatus = {
       url = "github:dj95/zjstatus";
     };

@@ -3,11 +3,14 @@ _: {
     plugins = {
       lsp = {
         enable = true;
+        inlayHints = true;
         servers = {
           bashls.enable = true;
           cssls.enable = true;
           eslint.enable = true;
-          gopls.enable = true;
+          gopls = {
+            enable = true;
+          };
           html.enable = true;
           java_language_server.enable = true;
           jsonls.enable = true;

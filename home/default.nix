@@ -5,6 +5,7 @@
 }: {
   imports = [
     inputs.nixvim.homeManagerModules.nixvim
+    inputs.nvf.homeManagerModules.default
     inputs.niri.homeModules.niri
 
     ./fastfetch
@@ -13,6 +14,7 @@
     ./shell
     ./niri
     ./nixvim
+    ./nvf
     ./spotify-tui
   ];
 
