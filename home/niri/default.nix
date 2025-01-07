@@ -1,12 +1,48 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: let
+  makeCommand = command: {
+    command = [command];
+  };
+in {
+  home.packages = with pkgs; [
+    grim
+    slurp
+
+    wl-clipboard
+    hyprpicker
+  ];
+
   programs.niri = {
     enable = true;
     settings = {
+      environment = {
+        CLUTTER_BACKEND = "wayland";
+        DISPLAY = ":0";
+        GDK_BACKEND = "wayland,x11";
+        MOZ_ENABLE_WAYLAND = "1";
+        NIXOS_OZONE_WL = "1";
+        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      };
+
       spawn-at-startup = [
-        {
-          command = ["swww-daemon & swww img ~/Pictures/wallpaper.png"];
-        }
+        (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
+        (makeCommand "swww-daemon")
+        (makeCommand "wl-paste --type image --watch cliphist store")
+        (makeCommand "wl-paste --type text --watch cliphist store")
+        (makeCommand "waybar")
       ];
+
+      cursor = {
+        theme = "breeze_cursors";
+        size = 20;
+      };
+
+      hotkey-overlay = {
+        skip-at-startup = true;
+      };
 
       binds = with config.lib.niri.actions; {
         "Mod+Space".action.spawn = ["fuzzel"];

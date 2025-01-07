@@ -16,6 +16,7 @@
     ./nixvim
     ./nvf
     ./spotify-tui
+    ./waybar
   ];
 
   home.username = "matthew_hre";
@@ -74,6 +75,12 @@
     pciutils
     usbutils
   ];
+
+  home.sessionVariables = {
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    XDG_SESSION_TYPE = "wayland";
+  };
 
   programs.git = {
     enable = true;
