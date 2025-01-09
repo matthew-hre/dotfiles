@@ -4,16 +4,14 @@
   ...
 }: {
   imports = [
-    inputs.nixvim.homeManagerModules.nixvim
     inputs.nvf.homeManagerModules.default
     inputs.niri.homeModules.niri
 
+    ./dunst
     ./fastfetch
     ./fuzzel
-    ./helix
     ./shell
     ./niri
-    ./nixvim
     ./nvf
     ./spotify-tui
     ./waybar

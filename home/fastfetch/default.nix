@@ -1,8 +1,4 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs.fastfetch = {
     enable = true;
     package = pkgs.fastfetch;
@@ -46,7 +42,7 @@
         {
           type = "host";
           key = "host   ";
-          format = "{1}";
+          format = "{0}";
           keyColor = "green";
         }
         {

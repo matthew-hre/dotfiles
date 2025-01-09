@@ -1,4 +1,9 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  lib,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -37,17 +42,42 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_CA.UTF-8";
 
+  # Enable the KDE Plasma Desktop Environment.
+  services.desktopManager.plasma6.enable = true;
+
+  specialisation = {
+    niri = {
+      configuration = {
+        environment.systemPackages = [
+          pkgs.swww
+        ];
+
+        programs.niri = {
+          enable = true;
+          package = pkgs.niri;
+        };
+        services.greetd.settings.default_session.command = lib.mkDefault "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd niri --asterisks --theme border=green;text=white;prompt=green;time=green;action=purple;button=green;container=black;input=white";
+
+        services.desktopManager.plasma6.enable = lib.mkDefault false;
+      };
+    };
+  };
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd niri --asterisks --theme border=green;text=white;prompt=green;time=green;action=purple;button=green;container=black;input=white";
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time -r --cmd startplasma-wayland --asterisks --theme border=green;text=white;prompt=green;time=green;action=purple;button=green;container=black;input=white";
         user = "greeter";
       };
     };
   };
 
   services.journald.extraConfig = "SystemMaxUse=1G";
+
+  environment.plasma6.excludePackages = with pkgs.kdePackages; [
+    kate
+  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -59,7 +89,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -80,6 +110,8 @@
 
   # Enable OpenGL
   hardware.graphics.enable = true;
+
+  services.power-profiles-daemon.enable = false;
 
   services.tlp = {
     enable = true;
@@ -113,10 +145,10 @@
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
     extraGroups = ["networkmanager" "wheel"];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
 
   security.sudo.enable = true;
 
@@ -130,6 +162,9 @@
     hunspell
     hunspellDicts.en_CA
     hunspellDicts.en_US
+    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
+    kdePackages.kconfig
+    kde-rounded-corners
     libnotify
     libreoffice-qt
     nomacs
@@ -147,17 +182,13 @@
     firefox = {
       enable = true;
     };
-    niri = {
-      enable = true;
-      package = pkgs.niri;
-    };
     steam = {
       enable = true;
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-    zsh.enable = true;
+    fish.enable = true;
     _1password.enable = true;
     _1password-gui = {
       enable = true;
@@ -189,6 +220,9 @@
 
   services.fprintd.enable = true;
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-vfs0090;
+
+  # TODO: disable this later
+  virtualisation.docker.enable = true;
 
   # List services that you want to enable:
 

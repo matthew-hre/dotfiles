@@ -154,10 +154,10 @@
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
     extraGroups = ["wheel" "networkmanager"];
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
   };
 
-  users.defaultUserShell = pkgs.zsh;
+  users.defaultUserShell = pkgs.fish;
 
   security.sudo.enable = true;
 
@@ -200,7 +200,7 @@
       dedicatedServer.openFirewall = true;
       localNetworkGameTransfers.openFirewall = true;
     };
-    zsh.enable = true;
+    fish.enable = true;
     _1password.enable = true;
     _1password-gui = {
       enable = true;

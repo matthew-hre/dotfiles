@@ -13,6 +13,9 @@ in {
 
     wl-clipboard
     hyprpicker
+
+    networkmanagerapplet
+    brightnessctl
   ];
 
   programs.niri = {
@@ -28,15 +31,19 @@ in {
       };
 
       spawn-at-startup = [
-        (makeCommand "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1")
         (makeCommand "swww-daemon")
+        (makeCommand "kwalletd6")
+        (makeCommand "kded6")
+        (makeCommand "${pkgs.polkit-kde-agent}")
+        (makeCommand "NetworkManager")
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "waybar")
+        (makeCommand "ghostty")
       ];
 
       cursor = {
-        theme = "breeze_cursors";
+        theme = "BreezeX-Dark";
         size = 20;
       };
 
@@ -74,7 +81,7 @@ in {
 
         "Mod+Shift+Slash".action = show-hotkey-overlay;
 
-        "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+"];
+        "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" "--limit" "1.0"];
         "XF86AudioRaiseVolume".allow-when-locked = true;
         "XF86AudioLowerVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-"];
         "XF86AudioLowerVolume".allow-when-locked = true;
@@ -82,6 +89,8 @@ in {
         "XF86AudioMute".allow-when-locked = true;
         "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
         "XF86AudioMicMute".allow-when-locked = true;
+        "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "10%-"];
+        "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "10%+"];
 
         "Mod+1".action = focus-workspace 1;
         "Mod+2".action = focus-workspace 2;

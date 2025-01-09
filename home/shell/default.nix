@@ -1,9 +1,10 @@
 {...}: {
   imports = [
+    ./fish.nix
     ./ghostty.nix
     ./kitty.nix
     ./zellij/default.nix
-    ./zsh.nix
+    # ./zsh.nix
   ];
 
   home.sessionVariables = {

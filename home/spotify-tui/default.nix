@@ -4,7 +4,7 @@
     withDaemon = true;
     withMediaControl = true;
     withLyrics = false;
-    withImage = false;
+    withImage = true;
     withNotify = true;
     withSixel = false;
     withFuzzy = true;
