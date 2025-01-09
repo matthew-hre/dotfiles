@@ -5,7 +5,6 @@
       wifi.powersave = false;
       wifi.scanRandMacAddress = false;
     };
+    firewall.enable = true;
   };
-
-  firewall.enable = true;
 }

@@ -1,20 +1,19 @@
-{
-  pkgs,
-  self,
-  inputs,
-  ...
-}: let
-  mod = "${self}/system";
+{pkgs, ...}: let
+  system = ../../system;
 in {
   imports = [
-    "${mod}/hardware-configuration.nix"
-    "${mod}/core"
-    "${mod}/hardware/bluetooth.nix"
-    "${mod}/hardware/nvidia.nix"
-    "${mod}/network"
-    "${mod}/services/greetd.nix"
-    "${mod}/services/pipewire.nix"
-    "${mod}/services/power.nix"
+    ./hardware-configuration.nix
+    "${system}/core"
+    "${system}/hardware/bluetooth.nix"
+    "${system}/hardware/nvidia.nix"
+    "${system}/network"
+    "${system}/programs/fonts.nix"
+    "${system}/programs/plasma.nix"
+    "${system}/services/greetd.nix"
+    "${system}/services/openssh.nix"
+    "${system}/services/openvpn.nix"
+    "${system}/services/pipewire.nix"
+    "${system}/services/power.nix"
   ];
 
   # Bootloader
@@ -45,18 +44,8 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = ["nvidia"];
-
-  # Enable the Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
 
   services.journald.extraConfig = "SystemMaxUse=1G";
-
-  # Disable some non-essential packages
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    kate
-    okular
-  ];
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -79,8 +68,6 @@ in {
     hunspell
     hunspellDicts.en_CA
     hunspellDicts.en_US
-    inputs.kwin-effects-forceblur.packages.${pkgs.system}.default
-    kdePackages.kconfig
     keepassxc
     libnotify
     libreoffice-qt
@@ -111,25 +98,6 @@ in {
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["matthew_hre"];
-    };
-  };
-
-  # Include fonts
-  fonts.packages = with pkgs; [
-    departure-mono
-    fira-code
-    fira-code-symbols
-    work-sans
-    nerd-fonts.fira-code
-  ];
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
-
-  services.openvpn.servers = {
-    mruVPN = {
-      config = ''config /home/matthew_hre/.config/openvpn/mruVPN.conf '';
-      autoStart = false;
     };
   };
 
