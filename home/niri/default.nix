@@ -7,6 +7,12 @@
     command = [command];
   };
 in {
+  # lib.mkIf toad
+  imports = [
+    ../dunst
+    ../waybar
+  ];
+
   home.packages = with pkgs; [
     grim
     slurp

@@ -1,75 +1,49 @@
 {
   pkgs,
+  hostname,
+  lib,
   inputs,
   ...
-}: {
-  imports = [
-    inputs.nvf.homeManagerModules.default
-    inputs.niri.homeModules.niri
+}: let
+  toad = hostname == "toad";
+in {
+  imports =
+    [
+      inputs.nvf.homeManagerModules.default
+      inputs.niri.homeModules.niri
 
-    ./dunst
-    ./fastfetch
-    ./fuzzel
-    ./shell
-    ./niri
-    ./nvf
-    ./spotify-tui
-    ./waybar
-  ];
+      ./fastfetch
+      ./fuzzel
+      ./shell
+      ./nvf
+      ./spotify-tui
+    ]
+    ++ lib.optional toad ./niri;
 
   home.username = "matthew_hre";
   home.homeDirectory = "/home/matthew_hre";
 
   home.packages = with pkgs; [
-    nnn
-
     zip
     xz
     unzip
     p7zip
 
     ripgrep
-    jq
-    yq-go
     eza
     tldr
 
-    mtr
-    iperf3
-    dnsutils
-    ldns
-    aria2
-    socat
-    nmap
-    ipcalc
-
-    file
-    which
-    tree
-    gnused
-    gnutar
-    gawk
-    zstd
-    gnupg
-
     gh
     lazygit
+    lazydocker
 
     alejandra
     nix-output-monitor
 
     glow
 
-    iotop
-    iftop
-
     strace
     ltrace
-    lsof
-
-    sysstat
-    lm_sensors
-    ethtool
     pciutils
     usbutils
   ];

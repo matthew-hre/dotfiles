@@ -21,14 +21,9 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    nixvim.url = "github:nix-community/nixvim";
-    nixvim.inputs.nixpkgs.follows = "nixpkgs";
-
     nvf.url = "github:notashelf/nvf";
 
-    zjstatus = {
-      url = "github:dj95/zjstatus";
-    };
+    zjstatus.url = "github:dj95/zjstatus";
   };
 
   outputs = inputs @ {
@@ -44,6 +39,7 @@
 
         specialArgs = {
           inherit inputs;
+          hostname = "yoshi";
         };
 
         modules = [
@@ -60,7 +56,10 @@
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              hostname = "yoshi";
+            };
             home-manager.users.matthew_hre = import ./home/default.nix;
           }
         ];
@@ -70,6 +69,7 @@
 
         specialArgs = {
           inherit inputs;
+          hostname = "toad";
         };
 
         modules = [
@@ -86,7 +86,10 @@
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {inherit inputs;};
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              hostname = "toad";
+            };
             home-manager.users.matthew_hre = import ./home/default.nix;
           }
         ];
