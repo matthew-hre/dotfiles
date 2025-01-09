@@ -4,10 +4,10 @@
 
 (screenshots coming soon)
 
-|               | Wayland                 | 
-|---------------|-------------------------|
-| **Shell:**    | zsh + OhMyZsh + zellij  |
-| **WM:**       | KDE Plasma 6 + Karousel |
-| **Editor:**   | VSCode + NixVim         |
-| **Terminal:** | Ghostty Private Beta    |
-| **Browser:**  | Firefox w/ Custom CSS   |
+|               | Wayland               |
+| ------------- | --------------------- |
+| **Shell:**    | fish                  |
+| **WM:**       | KDE Plasma 6, Niri    |
+| **Editor:**   | VSCode + NVF          |
+| **Terminal:** | Ghostty               |
+| **Browser:**  | Firefox w/ Custom CSS |
