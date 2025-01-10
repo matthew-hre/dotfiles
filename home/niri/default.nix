@@ -7,9 +7,9 @@
     command = [command];
   };
 in {
-  # lib.mkIf toad
   imports = [
     ../dunst
+    ../hyprlock
     ../waybar
   ];
 
@@ -45,6 +45,7 @@ in {
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "waybar")
+        (makeCommand "hyprlock")
         (makeCommand "ghostty")
       ];
 
@@ -63,6 +64,8 @@ in {
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;
+
+        "Mod+L".action.spawn = ["hyprlock"];
 
         "Mod+Minus".action = set-column-width "-10%";
         "Mod+Equal".action = set-column-width "+10%";

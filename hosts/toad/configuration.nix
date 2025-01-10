@@ -55,9 +55,6 @@ in {
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   environment.systemPackages = with pkgs; [
     hunspell
     hunspellDicts.en_CA
@@ -67,7 +64,6 @@ in {
     libreoffice-qt
     nomacs
     obsidian
-    fprintd
     (discord.override {
       withOpenASAR = true;
       withVencord = true;
