@@ -5,10 +5,13 @@ in {
     ./hardware-configuration.nix
     "${system}/core"
     "${system}/hardware/bluetooth.nix"
-    "${system}/hardware/nvidia.nix"
+    "${system}/hardware/fprintd.nix"
+    "${system}/hardware/fwupd.nix"
+    "${system}/hardware/specialisations.nix"
     "${system}/network"
     "${system}/programs/fonts.nix"
     "${system}/programs/plasma.nix"
+    "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
     "${system}/services/openvpn.nix"
@@ -20,30 +23,20 @@ in {
   boot = {
     loader = {
       systemd-boot.enable = false;
-      efi.efiSysMountPoint = "/boot/efi";
+      efi.efiSysMountPoint = "/boot";
       grub = {
         enable = true;
         efiSupport = true;
         efiInstallAsRemovable = true;
         device = "nodev";
-        extraEntries = ''
-          menuentry 'Windows Boot Manager (on /dev/nvme1n1p1)' --class windows --class os $menuentry_id_option 'osprober-efi-74E9-4770' {
-            insmod part_gpt
-            insmod fat
-            search --no-floppy --fs-uuid --set=root 74E9-4770
-            chainloader /efi/Microsoft/Boot/bootmgfw.efi
-          }
-        '';
+        gfxmodeEfi = "2880x1920";
+        font = "${pkgs.nerd-fonts.fira-code}/share/fonts/truetype/NerdFonts/FiraCode/FiraCodeNerdFontMono-Regular.ttf";
+        fontSize = 24;
       };
     };
-    supportedFilesystems = ["ntfs"];
   };
 
-  # System Hostname
-  networking.hostName = "yoshi";
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  networking.hostName = "toad";
 
   services.journald.extraConfig = "SystemMaxUse=1G";
 
@@ -60,20 +53,17 @@ in {
   hardware.graphics.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
 
-  # Install packages system-wide
   environment.systemPackages = with pkgs; [
-    godot_4
     hunspell
     hunspellDicts.en_CA
     hunspellDicts.en_US
-    keepassxc
+    kde-rounded-corners
     libnotify
     libreoffice-qt
     nomacs
     obsidian
-    prismlauncher
     (discord.override {
       withOpenASAR = true;
       withVencord = true;
@@ -82,7 +72,6 @@ in {
     vim
   ];
 
-  # Install apps system-wide
   programs = {
     firefox = {
       enable = true;
@@ -94,6 +83,7 @@ in {
       localNetworkGameTransfers.openFirewall = true;
     };
     fish.enable = true;
+    _1password.enable = true;
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["matthew_hre"];
@@ -106,5 +96,5 @@ in {
   # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "24.05"; # Did you read the comment?
+  system.stateVersion = "24.11"; # Did you read the comment?
 }

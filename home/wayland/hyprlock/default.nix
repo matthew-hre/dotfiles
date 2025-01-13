@@ -10,13 +10,17 @@
         no_fade_in = true;
       };
 
+      auth = {
+        "fingerprint:enabled" = true;
+      };
+
       background = [
         {
           monitor = "";
           path = "~/Pictures/wallpaper.png";
           blur_passes = 3;
           blur_size = 12;
-          noise = "0.2";
+          noise = "0.1";
         }
       ];
 
@@ -54,14 +58,14 @@
         {
           monitor = "";
           text = ''
-            cmd[update:1000] echo "<span font-weight='ultralight' >$(date +'%H %M %S')</span>"
+            cmd[update:1000] echo "<span>$(date +'%H:%M:%S')</span>"
           '';
-          font_size = 200;
-          font_family = "Work Sans";
+          font_size = 60;
+          font_family = "FiraCode Nerd Font";
 
           color = "rgb(248, 248, 242)";
 
-          position = "0%, 2%";
+          position = "0%, -30%";
 
           valign = "center";
           halign = "center";

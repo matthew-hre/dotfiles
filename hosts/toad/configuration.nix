@@ -83,7 +83,6 @@ in {
       localNetworkGameTransfers.openFirewall = true;
     };
     fish.enable = true;
-    _1password.enable = true;
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["matthew_hre"];
