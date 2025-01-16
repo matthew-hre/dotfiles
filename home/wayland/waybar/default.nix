@@ -32,7 +32,7 @@ in {
       layer = "top";
       modules-left = ["clock"];
       modules-center = ["niri/window"];
-      modules-right = ["wireplumber" "network" "bluetooth" "battery" "tray"];
+      modules-right = ["wireplumber" "network" "bluetooth" "battery"];
 
       battery = {
         interval = 5;

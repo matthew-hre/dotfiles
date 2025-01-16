@@ -1,4 +1,4 @@
-{
+{pkgs, ...}: {
   programs.nvf = {
     enable = true;
 
@@ -8,6 +8,11 @@
 
       syntaxHighlighting = true;
       useSystemClipboard = true;
+      options = {
+        tabstop = 2;
+        shiftwidth = 2;
+      };
+      preventJunkFiles = true;
 
       keymaps = [
         {
@@ -93,6 +98,24 @@
           treesitter.enable = true;
         };
       };
+
+      snippets.luasnip = {
+        enable = true;
+      };
+
+      treesitter = {
+        enable = true;
+        addDefaultGrammars = true;
+        autotagHtml = true;
+        fold = true;
+        grammars = [pkgs.vimPlugins.nvim-treesitter.builtGrammars.typescript];
+
+        context.enable = true;
+        highlight.enable = true;
+        indent.enable = true;
+      };
+
+      autocomplete.nvim-cmp.enable = true;
 
       theme = {
         enable = true;

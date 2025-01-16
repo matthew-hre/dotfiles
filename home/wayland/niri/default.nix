@@ -7,12 +7,6 @@
     command = [command];
   };
 in {
-  # lib.mkIf toad
-  imports = [
-    ../dunst
-    ../waybar
-  ];
-
   home.packages = with pkgs; [
     grim
     slurp
@@ -45,6 +39,7 @@ in {
         (makeCommand "wl-paste --type image --watch cliphist store")
         (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "waybar")
+        (makeCommand "hyprlock")
         (makeCommand "ghostty")
       ];
 
@@ -63,6 +58,10 @@ in {
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;
+        "Mod+G".action = toggle-window-floating;
+        "Mod+C".action = center-column;
+
+        "Mod+L".action.spawn = ["hyprlock"];
 
         "Mod+Minus".action = set-column-width "-10%";
         "Mod+Equal".action = set-column-width "+10%";
@@ -95,8 +94,8 @@ in {
         "XF86AudioMute".allow-when-locked = true;
         "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
         "XF86AudioMicMute".allow-when-locked = true;
-        "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "10%-"];
-        "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "10%+"];
+        "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
+        "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "5%+"];
 
         "Mod+1".action = focus-workspace 1;
         "Mod+2".action = focus-workspace 2;
@@ -118,11 +117,17 @@ in {
         "Mod+Shift+9".action = move-column-to-workspace 9;
       };
 
+      switch-events = {
+        lid-close.action.spawn = ["hyprlock"];
+      };
+
       prefer-no-csd = true;
 
       layout = {
         gaps = 8;
-        center-focused-column = "always";
+        center-focused-column = "never";
+
+        default-column-width.proportion = 1.;
 
         focus-ring = {
           enable = false;
