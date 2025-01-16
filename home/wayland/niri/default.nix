@@ -59,6 +59,7 @@ in {
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;
         "Mod+G".action = toggle-window-floating;
+        "Mod+C".action = center-column;
 
         "Mod+L".action.spawn = ["hyprlock"];
 
@@ -93,8 +94,8 @@ in {
         "XF86AudioMute".allow-when-locked = true;
         "XF86AudioMicMute".action.spawn = ["wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"];
         "XF86AudioMicMute".allow-when-locked = true;
-        "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "10%-"];
-        "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "10%+"];
+        "XF86MonBrightnessDown".action.spawn = ["brightnessctl" "set" "5%-"];
+        "XF86MonBrightnessUp".action.spawn = ["brightnessctl" "set" "5%+"];
 
         "Mod+1".action = focus-workspace 1;
         "Mod+2".action = focus-workspace 2;
@@ -124,7 +125,9 @@ in {
 
       layout = {
         gaps = 8;
-        center-focused-column = "always";
+        center-focused-column = "never";
+
+        default-column-width.proportion = 1.;
 
         focus-ring = {
           enable = false;

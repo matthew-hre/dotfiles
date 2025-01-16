@@ -7,8 +7,11 @@ in {
     "${system}/hardware/bluetooth.nix"
     "${system}/hardware/nvidia.nix"
     "${system}/network"
+    "${system}/programs/discord.nix"
     "${system}/programs/fonts.nix"
+    "${system}/programs/libre.nix"
     "${system}/programs/plasma.nix"
+    "${system}/programs/steam.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
     "${system}/services/openvpn.nix"
@@ -45,8 +48,6 @@ in {
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
-  services.journald.extraConfig = "SystemMaxUse=1G";
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -59,26 +60,19 @@ in {
   # Enable OpenGL
   hardware.graphics.enable = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
+  };
 
   # Install packages system-wide
   environment.systemPackages = with pkgs; [
     godot_4
-    hunspell
-    hunspellDicts.en_CA
-    hunspellDicts.en_US
     keepassxc
     libnotify
-    libreoffice-qt
     nomacs
     obsidian
     prismlauncher
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
-    vesktop
     vim
   ];
 
@@ -86,12 +80,6 @@ in {
   programs = {
     firefox = {
       enable = true;
-    };
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
     };
     fish.enable = true;
     _1password-gui = {
