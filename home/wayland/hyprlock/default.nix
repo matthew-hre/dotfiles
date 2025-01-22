@@ -17,10 +17,10 @@
       background = [
         {
           monitor = "";
-          path = "~/Pictures/wallpaper.png";
-          blur_passes = 3;
-          blur_size = 12;
-          noise = "0.1";
+          path = "screenshot";
+          blur_passes = 2;
+          blur_size = 7;
+          noise = 1.17e-2; # what the fuck???
         }
       ];
 

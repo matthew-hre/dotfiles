@@ -16,6 +16,8 @@ in {
 
     networkmanagerapplet
     brightnessctl
+
+    xwayland-satellite
   ];
 
   programs.niri = {
@@ -41,6 +43,7 @@ in {
         (makeCommand "waybar")
         (makeCommand "hyprlock")
         (makeCommand "ghostty")
+        (makeCommand "xwayland-satellite")
       ];
 
       cursor = {
@@ -127,6 +130,7 @@ in {
         gaps = 8;
         center-focused-column = "never";
 
+        # statix freaks out here for some reason
         default-column-width.proportion = 1.;
 
         focus-ring = {

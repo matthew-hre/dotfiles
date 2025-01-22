@@ -97,6 +97,13 @@
           lsp.enable = true;
           treesitter.enable = true;
         };
+
+        typst = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+          treesitter.enable = true;
+        };
       };
 
       snippets.luasnip = {

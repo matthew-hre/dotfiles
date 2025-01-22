@@ -15,8 +15,7 @@
       copy_on_select = "no";
       enable_audio_bell = "no";
       confirm_os_window_close = 0;
-      background_opacity = "0.7";
-      background_blur = 2;
+      background_opacity = "1";
       window_padding_width = "8 10";
 
       wheel_scroll_multiplier = 2;
@@ -78,7 +77,6 @@
       # Splits/Windows
       active_border_color = "#f8f8f2";
       inactive_border_color = "#6272a4";
-
     };
   };
 }
