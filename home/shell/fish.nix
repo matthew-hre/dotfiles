@@ -2,7 +2,9 @@
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
-      set fish_greeting # Disable greeting
+      set fish_greeting
+      set --universal pure_enable_nixdevshell true
+      set --universal pure_symbol_nixdevshell_prefix " "
       zoxide init fish | source
     '';
     shellAliases = {
