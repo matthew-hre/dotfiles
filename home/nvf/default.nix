@@ -3,7 +3,6 @@
     ./languages.nix
   ];
 
-{pkgs, ...}: {
   programs.nvf = {
     enable = true;
 
