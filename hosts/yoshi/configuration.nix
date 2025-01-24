@@ -59,6 +59,7 @@ in {
 
   # Enable OpenGL
   hardware.graphics.enable = true;
+  hardware.xone.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";

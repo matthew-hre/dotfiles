@@ -1,3 +1,8 @@
+{
+  imports = [
+    ./languages.nix
+  ];
+
 {pkgs, ...}: {
   programs.nvf = {
     enable = true;
@@ -29,100 +34,6 @@
         enable = true;
         formatOnSave = true;
       };
-
-      languages = {
-        enableLSP = true;
-        enableTreesitter = true;
-        enableFormat = true;
-        enableExtraDiagnostics = true;
-
-        html = {
-          enable = true;
-          treesitter.enable = true;
-          treesitter.autotagHtml = true;
-        };
-
-        go = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        java = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        lua = {
-          enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        markdown = {
-          enable = true;
-          format.enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        nix = {
-          enable = true;
-          extraDiagnostics.enable = true;
-          format.enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        python = {
-          enable = true;
-          dap.enable = true;
-          format.enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        tailwind = {
-          enable = true;
-          lsp.enable = true;
-        };
-
-        ts = {
-          enable = true;
-          extensions.ts-error-translator.enable = true;
-          extraDiagnostics.enable = true;
-          format.enable = true;
-          format.type = "prettierd";
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-
-        typst = {
-          enable = true;
-          format.enable = true;
-          lsp.enable = true;
-          treesitter.enable = true;
-        };
-      };
-
-      snippets.luasnip = {
-        enable = true;
-      };
-
-      treesitter = {
-        enable = true;
-        addDefaultGrammars = true;
-        autotagHtml = true;
-        fold = true;
-        grammars = [pkgs.vimPlugins.nvim-treesitter.builtGrammars.typescript];
-
-        context.enable = true;
-        highlight.enable = true;
-        indent.enable = true;
-      };
-
-      autocomplete.nvim-cmp.enable = true;
 
       theme = {
         enable = true;
