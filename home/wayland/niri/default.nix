@@ -48,7 +48,7 @@ in {
 
       cursor = {
         theme = "BreezeX-Dark";
-        size = 20;
+        size = 24;
       };
 
       hotkey-overlay = {
