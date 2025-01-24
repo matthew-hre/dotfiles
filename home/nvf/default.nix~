@@ -1,8 +1,4 @@
 {
-  imports = [
-    ./languages.nix
-  ];
-
   programs.nvf = {
     enable = true;
 

@@ -58,7 +58,6 @@ in {
 
   # Enable OpenGL
   hardware.graphics.enable = true;
-  hardware.xone.enable = true;
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
