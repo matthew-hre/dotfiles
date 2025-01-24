@@ -9,8 +9,11 @@ in {
     "${system}/hardware/fwupd.nix"
     "${system}/hardware/specialisations.nix"
     "${system}/network"
+    "${system}/programs/discord.nix"
     "${system}/programs/fonts.nix"
+    "${system}/programs/libre.nix"
     "${system}/programs/plasma.nix"
+    "${system}/programs/steam.nix"
     "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
@@ -38,8 +41,6 @@ in {
 
   networking.hostName = "toad";
 
-  services.journald.extraConfig = "SystemMaxUse=1G";
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -52,38 +53,23 @@ in {
   # Enable OpenGL
   hardware.graphics.enable = true;
 
-  environment.sessionVariables.NIXOS_OZONE_WL = "1";
-  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+  };
 
   environment.systemPackages = with pkgs; [
-    hunspell
-    hunspellDicts.en_CA
-    hunspellDicts.en_US
     kde-rounded-corners
     libnotify
-    libreoffice-qt
     nomacs
     obsidian
-    (discord.override {
-      withOpenASAR = true;
-      withVencord = true;
-    })
-    vesktop
     vim
   ];
-
   programs = {
     firefox = {
       enable = true;
     };
-    steam = {
-      enable = true;
-      remotePlay.openFirewall = true;
-      dedicatedServer.openFirewall = true;
-      localNetworkGameTransfers.openFirewall = true;
-    };
     fish.enable = true;
-    _1password.enable = true;
     _1password-gui = {
       enable = true;
       polkitPolicyOwners = ["matthew_hre"];

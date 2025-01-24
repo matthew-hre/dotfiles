@@ -18,7 +18,7 @@ in {
       ./nvf
       ./spotify-tui
     ]
-    ++ lib.optional toad ./niri;
+    ++ lib.optional toad ./wayland;
 
   home.username = "matthew_hre";
   home.homeDirectory = "/home/matthew_hre";

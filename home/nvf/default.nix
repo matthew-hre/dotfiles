@@ -3,6 +3,7 @@
     ./languages.nix
   ];
 
+{pkgs, ...}: {
   programs.nvf = {
     enable = true;
 
@@ -12,6 +13,11 @@
 
       syntaxHighlighting = true;
       useSystemClipboard = true;
+      options = {
+        tabstop = 2;
+        shiftwidth = 2;
+      };
+      preventJunkFiles = true;
 
       keymaps = [
         {
