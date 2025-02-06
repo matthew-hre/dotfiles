@@ -6,7 +6,7 @@
       follow = "mouse";
 
       # geometry
-      width = 300;
+      width = 350;
       origin = "top-right";
       scale = 0;
       offset = "9x9";

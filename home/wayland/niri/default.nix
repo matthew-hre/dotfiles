@@ -73,8 +73,8 @@ in {
         "Mod+Shift+Equal".action = set-window-height "+10%";
 
         "Mod+Left".action = focus-column-left;
-        "Mod+Down".action = focus-window-down;
-        "Mod+Up".action = focus-window-up;
+        "Mod+Down".action = focus-workspace-down;
+        "Mod+Up".action = focus-workspace-up;
         "Mod+Right".action = focus-column-right;
 
         "Mod+Shift+Left".action = move-column-left;
@@ -131,7 +131,7 @@ in {
         center-focused-column = "never";
 
         # statix freaks out here for some reason
-        default-column-width.proportion = 1.;
+        default-column-width.proportion = 1.0;
 
         focus-ring = {
           enable = false;

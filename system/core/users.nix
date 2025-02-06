@@ -3,7 +3,7 @@
     isNormalUser = true;
     home = "/home/matthew_hre";
     description = "Matthew Hrehirchuk";
-    extraGroups = ["wheel" "networkmanager"];
+    extraGroups = ["wheel" "networkmanager" "docker"];
     shell = pkgs.fish;
   };
 
