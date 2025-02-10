@@ -53,7 +53,7 @@ in {
         font-style = "Medium";
         gtk-wide-tabs = false;
 
-        shell-integration = "none";
+        shell-integration = "fish";
         theme = "${ghosttyTheme}";
         unfocused-split-opacity = 0.9;
         window-decoration = false;
