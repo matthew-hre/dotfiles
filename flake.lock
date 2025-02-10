@@ -117,15 +117,15 @@
       "locked": {
         "lastModified": 1739143498,
         "narHash": "sha256-85TvsfDdOBfthR44rRJV9KXpj415StJqVyq+BBlLCvM=",
-        "ref": "refs/heads/main",
+        "owner": "ghostty-org",
+        "repo": "ghostty",
         "rev": "a3e462bbba724bcf312fcd5edd12bb5e0251c853",
-        "revCount": 9336,
-        "type": "git",
-        "url": "ssh://git@github.com/ghostty-org/ghostty"
+        "type": "github"
       },
       "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/ghostty-org/ghostty"
+        "owner": "ghostty-org",
+        "repo": "ghostty",
+        "type": "github"
       }
     },
     "home-manager": {
