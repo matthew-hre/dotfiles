@@ -3,7 +3,7 @@
     ./fish.nix
     ./ghostty.nix
     ./kitty.nix
-    ./zellij/default.nix
+    # ./zellij
     # ./zsh.nix
   ];
 
@@ -17,8 +17,8 @@
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
 
-    ZELLIJ_AUTO_ATTACH = "true";
-    ZELLIJ_AUTO_EXIT = "true";
+    # ZELLIJ_AUTO_ATTACH = "true";
+    # ZELLIJ_AUTO_EXIT = "true";
 
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
 

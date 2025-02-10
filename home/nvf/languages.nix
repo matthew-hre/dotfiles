@@ -48,7 +48,10 @@
       enable = true;
       dap.enable = true;
       format.enable = true;
-      lsp.enable = true;
+      lsp = {
+        enable = true;
+        server = "pyright";
+      };
       treesitter.enable = true;
     };
 
