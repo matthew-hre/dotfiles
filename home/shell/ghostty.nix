@@ -54,6 +54,7 @@ in {
         gtk-wide-tabs = false;
 
         shell-integration = "fish";
+        window-inherit-working-directory = true;
         theme = "${ghosttyTheme}";
         unfocused-split-opacity = 0.9;
         window-decoration = false;

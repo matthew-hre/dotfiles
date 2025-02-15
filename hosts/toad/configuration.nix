@@ -14,6 +14,7 @@ in {
     "${system}/programs/libre.nix"
     "${system}/programs/plasma.nix"
     "${system}/programs/steam.nix"
+    "${system}/programs/xdg.nix"
     "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
@@ -64,6 +65,7 @@ in {
     nomacs
     obsidian
     vim
+    code-cursor
   ];
   programs = {
     firefox = {
