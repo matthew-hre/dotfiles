@@ -96,6 +96,36 @@
           }
         ];
       };
+      thwomp = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+
+        specialArgs = {
+          inherit inputs;
+          hostname = "thwomp";
+        };
+
+        modules = [
+          ./hosts/thwomp/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            environment.systemPackages = [
+              ghostty.packages.x86_64-linux.default
+            ];
+            nixpkgs.overlays = [
+              (final: prev: {
+                zjstatus = zjstatus.packages.${prev.system}.default;
+              })
+            ];
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              hostname = "thwomp";
+            };
+            home-manager.users.matthew_hre = import ./home/default.nix;
+          }
+        ];
+      };
     };
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
