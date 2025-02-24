@@ -23,8 +23,6 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
-
     zjstatus.url = "github:dj95/zjstatus";
   };
 

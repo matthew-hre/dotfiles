@@ -12,7 +12,6 @@ in {
     "${system}/programs/libre.nix"
     "${system}/programs/plasma.nix"
     "${system}/programs/steam.nix"
-    "${system}/programs/zen.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
     "${system}/services/openvpn.nix"
