@@ -82,12 +82,17 @@ in {
         "Mod+Shift+Up".action = move-window-up;
         "Mod+Shift+Right".action = move-column-right;
 
+        "Mod+Shift+Ctrl+Left".action = consume-or-expel-window-left;
+        "Mod+Shift+Ctrl+Right".action = consume-or-expel-window-right;
+
         "Mod+Shift+S".action = screenshot;
         "Print".action = screenshot;
         "Ctrl+Print".action = screenshot-screen;
         "Alt+Print".action = screenshot-window;
 
         "Mod+Shift+Slash".action = show-hotkey-overlay;
+
+        "Ctrl+Alt+Delete".action.spawn = ["~/nix-config/scripts/fuzzel_power.sh"];
 
         "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" "--limit" "1.0"];
         "XF86AudioRaiseVolume".allow-when-locked = true;
@@ -130,7 +135,6 @@ in {
         gaps = 8;
         center-focused-column = "never";
 
-        # statix freaks out here for some reason
         default-column-width.proportion = 1.0;
 
         focus-ring = {

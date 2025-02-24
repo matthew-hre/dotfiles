@@ -3,7 +3,6 @@
     withStreaming = true;
     withDaemon = true;
     withMediaControl = true;
-    withLyrics = false;
     withImage = true;
     withNotify = true;
     withSixel = false;

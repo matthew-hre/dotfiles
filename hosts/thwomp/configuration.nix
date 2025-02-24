@@ -1,48 +1,47 @@
-{pkgs, ...}: let
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+{
+  config,
+  pkgs,
+  ...
+}: let
   system = ../../system;
 in {
   imports = [
     ./hardware-configuration.nix
     "${system}/core"
+    "${system}/hardware/amd.nix"
     "${system}/hardware/bluetooth.nix"
-    "${system}/hardware/fprintd.nix"
-    "${system}/hardware/fwupd.nix"
-    "${system}/hardware/specialisations.nix"
     "${system}/network"
     "${system}/programs/discord.nix"
     "${system}/programs/fonts.nix"
     "${system}/programs/libre.nix"
     "${system}/programs/plasma.nix"
     "${system}/programs/steam.nix"
-    "${system}/programs/xdg.nix"
-    "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
     "${system}/services/openvpn.nix"
     "${system}/services/pipewire.nix"
-    "${system}/services/power.nix"
   ];
 
-  # Bootloader
   boot = {
     loader = {
       systemd-boot.enable = false;
       efi.efiSysMountPoint = "/boot";
+      efi.canTouchEfiVariables = true;
       grub = {
         enable = true;
         efiSupport = true;
-        efiInstallAsRemovable = true;
         device = "nodev";
-        gfxmodeEfi = "2880x1920";
-        font = "${pkgs.nerd-fonts.fira-code}/share/fonts/truetype/NerdFonts/FiraCode/FiraCodeNerdFontMono-Regular.ttf";
-        fontSize = 24;
       };
     };
   };
 
-  networking.hostName = "toad";
+  networking.hostName = "thwomp"; # Define your hostname.
 
-  # Configure keymap in X11
+  services.xserver.enable = true;
+
   services.xserver.xkb = {
     layout = "us";
     variant = "";
@@ -51,22 +50,35 @@ in {
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable OpenGL
+  hardware.bluetooth.settings.General.Experimental = "true";
+  hardware.enableAllFirmware = true;
+  hardware.firmware = [
+    pkgs.firmwareLinuxNonfree
+  ];
+
+  boot.kernelPatches = [
+    {
+      name = "btusb-patch";
+      patch = ./btusb.patch;
+    }
+  ];
+
   hardware.graphics.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   environment.systemPackages = with pkgs; [
-    kde-rounded-corners
+    godot_4
     libnotify
     nomacs
     obsidian
+    prismlauncher
     vim
-    code-cursor
   ];
+
   programs = {
     firefox = {
       enable = true;

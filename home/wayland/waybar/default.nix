@@ -30,7 +30,7 @@ in {
     enable = true;
     settings.mainBar = {
       layer = "top";
-      modules-left = ["clock"];
+      modules-left = ["custom/clock"];
       modules-center = ["niri/window"];
       modules-right = ["wireplumber" "network" "bluetooth" "battery"];
 
@@ -43,9 +43,10 @@ in {
         states.critical = 10;
       };
 
-      clock = {
+      "custom/clock" = {
+        exec = "date +\"%-I:%M:%S %p\"";
         interval = 1;
-        format = "{:%H:%M:%S}";
+        tooltip = false;
       };
 
       network = {
@@ -104,6 +105,10 @@ in {
       ${module "*"} {
           margin: 3px 1px;
           padding: 2px 6px;
+      }
+
+      #tooltip {
+        background-color: #282A36;
       }
     '';
   };
