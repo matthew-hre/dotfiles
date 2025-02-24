@@ -52,9 +52,18 @@ in {
 
   hardware.bluetooth.settings.General.Experimental = "true";
   hardware.enableAllFirmware = true;
+  hardware.firmware = [
+    pkgs.firmwareLinuxNonfree
+  ];
+
+  boot.kernelPatches = [
+    {
+      name = "btusb-patch";
+      patch = ./btusb.patch;
+    }
+  ];
 
   hardware.graphics.enable = true;
-  hardware.xone.enable = true;
 
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
