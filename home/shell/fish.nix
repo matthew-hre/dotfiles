@@ -5,6 +5,7 @@
       set fish_greeting
       set --universal pure_enable_nixdevshell true
       set --universal pure_symbol_nixdevshell_prefix " "
+      set --universal pure_symbol_nixdevshell_symbol ""
       zoxide init fish | source
     '';
     shellAliases = {

@@ -55,6 +55,15 @@ in {
         skip-at-startup = true;
       };
 
+      # outputs."eDP-1" = {
+      # enable = true;
+      # mode = {
+      #   refresh = 60.001;
+      #   width = 2880;
+      #   height = 1920;
+      # };
+      # };
+
       binds = with config.lib.niri.actions; {
         "Mod+Space".action.spawn = ["fuzzel"];
         "Mod+Return".action.spawn = ["ghostty"];
