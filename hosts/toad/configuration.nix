@@ -15,6 +15,7 @@ in {
     "${system}/programs/plasma.nix"
     "${system}/programs/steam.nix"
     "${system}/programs/xdg.nix"
+    "${system}/programs/zen.nix"
     "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
