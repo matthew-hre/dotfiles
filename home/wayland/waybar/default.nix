@@ -29,7 +29,7 @@ in {
   programs.waybar = {
     enable = true;
     settings.mainBar = {
-      layer = "top";
+      layer = "bottom";
       modules-left = ["custom/clock"];
       modules-center = ["niri/window"];
       modules-right = ["wireplumber" "network" "bluetooth" "battery"];
@@ -86,7 +86,7 @@ in {
       }
 
       window#waybar {
-        background: #282A36;
+        background: transparent; /* #282A36; */
       }
 
       #workspaces button {

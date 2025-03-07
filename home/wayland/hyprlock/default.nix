@@ -17,7 +17,7 @@
       background = [
         {
           monitor = "";
-          path = "screenshot";
+          path = "~/Pictures/outer-wilds-4k.png";
           blur_passes = 2;
           blur_size = 7;
           noise = 1.17e-2; # what the fuck???
