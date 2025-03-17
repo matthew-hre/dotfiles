@@ -65,7 +65,6 @@ in {
     nomacs
     obsidian
     vim
-    code-cursor
   ];
   programs = {
     firefox = {

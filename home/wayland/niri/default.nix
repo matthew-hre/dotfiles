@@ -8,10 +8,8 @@
   };
 in {
   home.packages = with pkgs; [
-    grim
-    slurp
-
     wl-clipboard
+    cliphist
     hyprpicker
 
     networkmanagerapplet
@@ -30,20 +28,20 @@ in {
         MOZ_ENABLE_WAYLAND = "1";
         NIXOS_OZONE_WL = "1";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+        SDL_VIDEODRIVER = "wayland";
       };
 
       spawn-at-startup = [
         (makeCommand "swww-daemon")
         (makeCommand "kwalletd6")
         (makeCommand "kded6")
-        (makeCommand "${pkgs.polkit-kde-agent}")
+        (makeCommand "${pkgs.kdePackages.polkit-kde-agent-1}")
         (makeCommand "NetworkManager")
-        (makeCommand "wl-paste --type image --watch cliphist store")
-        (makeCommand "wl-paste --type text --watch cliphist store")
         (makeCommand "waybar")
         (makeCommand "hyprlock")
         (makeCommand "ghostty")
         (makeCommand "xwayland-satellite")
+        {command = ["wl-paste" "--watch" "cliphist" "store"];}
       ];
 
       cursor = {
@@ -64,7 +62,9 @@ in {
       # };
       # };
 
-      binds = with config.lib.niri.actions; {
+      binds = with config.lib.niri.actions; let
+        sh = spawn "sh" "-c";
+      in {
         "Mod+Space".action.spawn = ["fuzzel"];
         "Mod+Return".action.spawn = ["ghostty"];
         "Mod+Q".action = close-window;
@@ -72,6 +72,7 @@ in {
         "Mod+Shift+F".action = fullscreen-window;
         "Mod+G".action = toggle-window-floating;
         "Mod+C".action = center-column;
+        "Mod+V".action = sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
 
         "Mod+L".action.spawn = ["hyprlock"];
 
@@ -96,7 +97,6 @@ in {
 
         "Mod+Shift+S".action = screenshot;
         "Print".action = screenshot;
-        "Ctrl+Print".action = screenshot-screen;
         "Alt+Print".action = screenshot-window;
 
         "Mod+Shift+Slash".action = show-hotkey-overlay;
@@ -160,6 +160,44 @@ in {
           inactive.color = "#282A36";
         };
       };
+
+      animations.shaders.window-resize = ''
+        vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
+          vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
+
+          vec3 coords_stretch = niri_geo_to_tex_next * coords_curr_geo;
+          vec3 coords_crop = niri_geo_to_tex_next * coords_next_geo;
+
+          // We can crop if the current window size is smaller than the next window
+          // size. One way to tell is by comparing to 1.0 the X and Y scaling
+          // coefficients in the current-to-next transformation matrix.
+          bool can_crop_by_x = niri_curr_geo_to_next_geo[0][0] <= 1.0;
+          bool can_crop_by_y = niri_curr_geo_to_next_geo[1][1] <= 1.0;
+
+          vec3 coords = coords_stretch;
+          if (can_crop_by_x)
+              coords.x = coords_crop.x;
+          if (can_crop_by_y)
+              coords.y = coords_crop.y;
+
+          vec4 color = texture2D(niri_tex_next, coords.st);
+
+          // However, when we crop, we also want to crop out anything outside the
+          // current geometry. This is because the area of the shader is unspecified
+          // and usually bigger than the current geometry, so if we don't fill pixels
+          // outside with transparency, the texture will leak out.
+          //
+          // When stretching, this is not an issue because the area outside will
+          // correspond to client-side decoration shadows, which are already supposed
+          // to be outside.
+          if (can_crop_by_x && (coords_curr_geo.x < 0.0 || 1.0 < coords_curr_geo.x))
+              color = vec4(0.0);
+          if (can_crop_by_y && (coords_curr_geo.y < 0.0 || 1.0 < coords_curr_geo.y))
+              color = vec4(0.0);
+
+          return color;
+        }
+      '';
 
       window-rules = [
         (let
