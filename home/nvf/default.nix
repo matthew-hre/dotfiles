@@ -48,6 +48,11 @@
       telescope.enable = true;
       presence.neocord.enable = true;
 
+      autocomplete = {
+        enableSharedCmpSources = true;
+        blink-cmp.enable = true;
+      };
+
       ui.noice.enable = true;
 
       ui.borders.plugins.which-key.style = "solid";
