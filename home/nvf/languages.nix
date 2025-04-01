@@ -31,7 +31,6 @@
 
     markdown = {
       enable = true;
-      format.enable = true;
       lsp.enable = true;
       treesitter.enable = true;
     };
@@ -39,7 +38,6 @@
     nix = {
       enable = true;
       extraDiagnostics.enable = true;
-      format.enable = true;
       lsp.enable = true;
       treesitter.enable = true;
     };
@@ -47,7 +45,6 @@
     python = {
       enable = true;
       dap.enable = true;
-      format.enable = true;
       lsp = {
         enable = true;
         server = "pyright";
@@ -64,7 +61,6 @@
       enable = true;
       extensions.ts-error-translator.enable = true;
       extraDiagnostics.enable = true;
-      format.enable = true;
       format.type = "prettierd";
       lsp.enable = true;
       treesitter.enable = true;
