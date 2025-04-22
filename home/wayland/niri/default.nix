@@ -38,8 +38,6 @@ in {
         (makeCommand "${pkgs.kdePackages.polkit-kde-agent-1}")
         (makeCommand "NetworkManager")
         (makeCommand "waybar")
-        (makeCommand "hyprlock")
-        (makeCommand "ghostty")
         (makeCommand "xwayland-satellite")
         {command = ["wl-paste" "--watch" "cliphist" "store"];}
       ];
