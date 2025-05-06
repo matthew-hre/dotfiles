@@ -72,11 +72,11 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    godot_4
     libnotify
     nomacs
     obsidian
     prismlauncher
+    spotify # i hate it but the web client is so ass
     vim
   ];
 
