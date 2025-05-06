@@ -80,6 +80,7 @@
               ghostty.packages.x86_64-linux.default
             ];
             nixpkgs.overlays = [
+              inputs.niri.overlays.niri
               (final: prev: {
                 zjstatus = zjstatus.packages.${prev.system}.default;
               })
