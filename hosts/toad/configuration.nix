@@ -64,7 +64,7 @@ in {
     libnotify
     nomacs
     obsidian
-    windsurf
+    code-cursor
     vim
   ];
   programs = {
