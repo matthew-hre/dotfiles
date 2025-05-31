@@ -11,7 +11,6 @@
       vimAlias = true;
 
       syntaxHighlighting = true;
-      useSystemClipboard = true;
       options = {
         tabstop = 2;
         shiftwidth = 2;

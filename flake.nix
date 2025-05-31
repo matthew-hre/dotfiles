@@ -4,9 +4,7 @@
   inputs = {
     ghostty = {
       url = "github:ghostty-org/ghostty";
-
-      inputs.nixpkgs-stable.follows = "nixpkgs";
-      inputs.nixpkgs-unstable.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     home-manager.url = "github:nix-community/home-manager";
@@ -24,6 +22,7 @@
     nvf.url = "github:notashelf/nvf";
 
     zjstatus.url = "github:dj95/zjstatus";
+    zjstatus.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
