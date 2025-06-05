@@ -33,36 +33,6 @@
     ...
   }: {
     nixosConfigurations = {
-      yoshi = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        specialArgs = {
-          inherit inputs;
-          hostname = "yoshi";
-        };
-
-        modules = [
-          ./hosts/yoshi/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
-            nixpkgs.overlays = [
-              (final: prev: {
-                zjstatus = zjstatus.packages.${prev.system}.default;
-              })
-            ];
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              hostname = "yoshi";
-            };
-            home-manager.users.matthew_hre = import ./home/default.nix;
-          }
-        ];
-      };
       toad = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
 
@@ -79,6 +49,7 @@
               ghostty.packages.x86_64-linux.default
             ];
             nixpkgs.overlays = [
+              inputs.niri.overlays.niri
               (final: prev: {
                 zjstatus = zjstatus.packages.${prev.system}.default;
               })
