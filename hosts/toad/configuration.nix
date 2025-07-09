@@ -7,12 +7,11 @@ in {
     "${system}/hardware/bluetooth.nix"
     "${system}/hardware/fprintd.nix"
     "${system}/hardware/fwupd.nix"
-    "${system}/hardware/specialisations.nix"
     "${system}/network"
     "${system}/programs/discord.nix"
     "${system}/programs/fonts.nix"
     "${system}/programs/libre.nix"
-    "${system}/programs/plasma.nix"
+    "${system}/programs/niri.nix"
     "${system}/programs/steam.nix"
     "${system}/programs/xdg.nix"
     "${system}/services/docker.nix"
@@ -60,13 +59,12 @@ in {
   };
 
   environment.systemPackages = with pkgs; [
-    kde-rounded-corners
     libnotify
     nomacs
     obsidian
-    code-cursor
     vim
   ];
+
   programs = {
     firefox = {
       enable = true;

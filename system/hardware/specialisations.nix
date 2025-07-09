@@ -15,8 +15,6 @@
           package = pkgs.niri;
         };
 
-        services.desktopManager.plasma6.enable = lib.mkDefault false;
-
         # shoutout @CodedNil on gh for the fix
         services.keyd = {
           enable = true;

@@ -2,11 +2,6 @@
   description = "NixOS configuration";
 
   inputs = {
-    ghostty = {
-      url = "github:ghostty-org/ghostty";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -26,7 +21,6 @@
   };
 
   outputs = inputs @ {
-    ghostty,
     home-manager,
     nixpkgs,
     zjstatus,
@@ -45,9 +39,6 @@
           ./hosts/toad/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
             nixpkgs.overlays = [
               inputs.niri.overlays.niri
               (final: prev: {
@@ -76,9 +67,6 @@
           ./hosts/thwomp/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
             nixpkgs.overlays = [
               (final: prev: {
                 zjstatus = zjstatus.packages.${prev.system}.default;

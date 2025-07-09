@@ -1,11 +1,4 @@
-{
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
-  ghostty = inputs.ghostty.packages.${pkgs.system}.default;
-
+{pkgs, ...}: let
   ghosttyTheme = pkgs.writeTextFile {
     name = "ghostty-theme-Dracula";
     text = ''
@@ -35,16 +28,10 @@
   };
 in {
   config = {
-    home = {
-      packages = [ghostty];
-      sessionVariables = {GHOSTTY_RESOURCES_DIR = "${ghostty}/share";};
-    };
-
-    xdg.configFile."ghostty/config".text =
-      lib.generators.toKeyValue {
-        mkKeyValue = lib.generators.mkKeyValueDefault {} " = ";
-        listsAsDuplicateKeys = true;
-      } {
+    programs.ghostty = {
+      enable = true;
+      enableFishIntegration = true;
+      settings = {
         background-opacity = 1;
         confirm-close-surface = false;
         copy-on-select = true;
@@ -64,5 +51,6 @@ in {
         window-theme = "ghostty";
         keybind = ["ctrl+shift+l=new_split:right" "ctrl+shift+d=new_split:down"];
       };
+    };
   };
 }
