@@ -29,7 +29,7 @@ in {
   programs.waybar = {
     enable = true;
     settings.mainBar = {
-      layer = "bottom";
+      layer = "top";
       modules-left = ["custom/clock"];
       modules-center = ["niri/window"];
       modules-right = ["wireplumber" "network" "bluetooth" "battery"];

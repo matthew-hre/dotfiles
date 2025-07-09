@@ -29,6 +29,7 @@ in {
         GDK_BACKEND = "wayland,x11";
         MOZ_ENABLE_WAYLAND = "1";
         NIXOS_OZONE_WL = "1";
+        QT_QPA_PLATFORM = "wayland;xcb";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
       };
@@ -54,8 +55,11 @@ in {
       };
 
       overview = {
-        backdrop-color = "#000000"; # in case the wallpaper doesn't load
+        workspace-shadow.enable = false;
+        backdrop-color = "transparent";
       };
+
+      gestures.hot-corners.enable = false;
 
       binds = with config.lib.niri.actions; let
         sh = spawn "sh" "-c";
@@ -145,6 +149,8 @@ in {
 
         default-column-width.proportion = 1.0;
 
+        background-color = "transparent";
+
         focus-ring = {
           enable = false;
           width = 1;
@@ -160,7 +166,7 @@ in {
         };
       };
 
-      animations.shaders.window-resize = ''
+      animations.window-resize.custom-shader = ''
         vec4 resize_color(vec3 coords_curr_geo, vec3 size_curr_geo) {
           vec3 coords_next_geo = niri_curr_geo_to_next_geo * coords_curr_geo;
 
@@ -226,6 +232,30 @@ in {
             y = 10;
             relative-to = "bottom-right";
           };
+        }
+        {
+          matches = [
+            {is-floating = true;}
+          ];
+          shadow.enable = true;
+        }
+        {
+          matches = [
+            {
+              app-id = "1Password";
+            }
+          ];
+          block-out-from = "screencast";
+        }
+      ];
+      layer-rules = [
+        {
+          matches = [
+            {
+              namespace = "^swww-daemon$";
+            }
+          ];
+          place-within-backdrop = true;
         }
       ];
     };

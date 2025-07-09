@@ -71,6 +71,12 @@ in {
         plus-style = ''syntax "#003800"'';
         minus-style = ''syntax "#3f0001"'';
       };
+      url."git@github.com" = {
+        insteadOf = "gh";
+      };
+      url."git@github.com:matthew-hre/" = {
+        insteadOf = "mh:";
+      };
     };
   };
 
