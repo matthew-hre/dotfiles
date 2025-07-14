@@ -10,6 +10,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ghostty = {
+      url = "github:ghostty-org/ghostty";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     niri.url = "github:sodiboo/niri-flake";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,6 +26,7 @@
   };
 
   outputs = inputs @ {
+    ghostty,
     home-manager,
     nixpkgs,
     zjstatus,
@@ -39,6 +45,9 @@
           ./hosts/toad/configuration.nix
           home-manager.nixosModules.home-manager
           {
+            environment.systemPackages = [
+              ghostty.packages.x86_64-linux.default
+            ];
             nixpkgs.overlays = [
               inputs.niri.overlays.niri
               (final: prev: {
@@ -67,6 +76,9 @@
           ./hosts/thwomp/configuration.nix
           home-manager.nixosModules.home-manager
           {
+            environment.systemPackages = [
+              ghostty.packages.x86_64-linux.default
+            ];
             nixpkgs.overlays = [
               (final: prev: {
                 zjstatus = zjstatus.packages.${prev.system}.default;

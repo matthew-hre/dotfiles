@@ -158,6 +158,10 @@ in {
 
         background-color = "transparent";
 
+        insert-hint.display = {
+          color = "#BD93F9AA";
+        };
+
         focus-ring = {
           enable = false;
           width = 1;
