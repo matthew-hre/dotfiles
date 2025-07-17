@@ -72,7 +72,7 @@ in {
         sh = spawn "sh" "-c";
       in {
         "Mod+Space".action.spawn = ["fuzzel"];
-        "Mod+Return".action.spawn = ["ghostty"];
+        "Mod+Return".action.spawn = ["ghostty" "+new-window"];
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;

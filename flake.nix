@@ -20,16 +20,12 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nvf.url = "github:notashelf/nvf";
-
-    zjstatus.url = "github:dj95/zjstatus";
-    zjstatus.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs @ {
     ghostty,
     home-manager,
     nixpkgs,
-    zjstatus,
     ...
   }: {
     nixosConfigurations = {
@@ -50,9 +46,6 @@
             ];
             nixpkgs.overlays = [
               inputs.niri.overlays.niri
-              (final: prev: {
-                zjstatus = zjstatus.packages.${prev.system}.default;
-              })
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
@@ -78,11 +71,6 @@
           {
             environment.systemPackages = [
               ghostty.packages.x86_64-linux.default
-            ];
-            nixpkgs.overlays = [
-              (final: prev: {
-                zjstatus = zjstatus.packages.${prev.system}.default;
-              })
             ];
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
