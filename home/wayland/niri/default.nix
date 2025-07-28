@@ -72,7 +72,7 @@ in {
         sh = spawn "sh" "-c";
       in {
         "Mod+Space".action.spawn = ["fuzzel"];
-        "Mod+Return".action.spawn = ["ghostty"];
+        "Mod+Return".action.spawn = ["ghostty" "+new-window"];
         "Mod+Q".action = close-window;
         "Mod+F".action = maximize-column;
         "Mod+Shift+F".action = fullscreen-window;
@@ -157,6 +157,10 @@ in {
         default-column-width.proportion = 1.0;
 
         background-color = "transparent";
+
+        insert-hint.display = {
+          color = "#BD93F9AA";
+        };
 
         focus-ring = {
           enable = false;
