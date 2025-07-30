@@ -16,7 +16,6 @@ in {
       ./fuzzel
       ./shell
       ./nvf
-      ./spotify-tui
     ]
     ++ lib.optional toad ./wayland;
 

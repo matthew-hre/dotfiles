@@ -78,7 +78,7 @@ in {
     obsidian
     prismlauncher
     protonup-qt
-    spotify # i hate it but the web client is so ass
+    tidal-hifi
     vim
   ];
 
