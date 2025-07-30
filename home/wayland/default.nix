@@ -9,6 +9,13 @@
   ];
 
   home.packages = with pkgs; [
+    amberol
+    (celluloid.override {youtubeSupport = true;})
+    file-roller
+    loupe
+    nautilus
+    pwvucontrol
+
     wl-clipboard
     cliphist
     hyprpicker
