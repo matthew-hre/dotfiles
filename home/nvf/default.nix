@@ -17,6 +17,8 @@
       };
       preventJunkFiles = true;
 
+      clipboard.providers.wl-copy.enable = true;
+
       keymaps = [
         {
           mode = "!";
