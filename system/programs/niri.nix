@@ -1,12 +1,6 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    amberol
-    (celluloid.override {youtubeSupport = true;})
-    file-roller
-    loupe
-    nautilus
-    pwvucontrol
-    swww
+    swww # needs to be installed at the system level
   ];
 
   programs.niri = {
@@ -15,6 +9,7 @@
   };
 
   # shoutout @CodedNil on gh for the fix
+  # waiting on https://github.com/YaLTeR/niri/pull/1923 for a real fix
   services.keyd = {
     enable = true;
     keyboards.default = {

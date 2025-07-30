@@ -3,8 +3,6 @@
     ./fish.nix
     ./ghostty.nix
     ./kitty.nix
-    # ./zellij
-    # ./zsh.nix
   ];
 
   home.sessionVariables = {
@@ -16,9 +14,6 @@
 
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
-
-    # ZELLIJ_AUTO_ATTACH = "true";
-    # ZELLIJ_AUTO_EXIT = "true";
 
     ELECTRON_OZONE_PLATFORM_HINT = "wayland";
 

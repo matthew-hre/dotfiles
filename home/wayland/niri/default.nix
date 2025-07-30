@@ -7,25 +7,6 @@
     command = [command];
   };
 in {
-  home.packages = with pkgs; [
-    wl-clipboard
-    cliphist
-    hyprpicker
-
-    networkmanagerapplet
-    brightnessctl
-
-    xwayland-satellite
-  ];
-
-  gtk = {
-    enable = true;
-    theme = {
-      package = pkgs.dracula-theme;
-      name = "Dracula";
-    };
-  };
-
   programs.niri = {
     enable = true;
     package = pkgs.niri;

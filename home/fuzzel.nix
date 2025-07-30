@@ -9,9 +9,6 @@
         icon-theme = "Papirus";
         prompt = ''"  "'';
         font = "FiraCode Nerd Font:size=14";
-        # horizontal-pad = 20;
-        # vertical-pad = 0;
-        # inner-pad = 0;
       };
       colors = {
         background = "282A36FF";
@@ -24,7 +21,7 @@
       };
       border = {
         width = 2;
-        radius = 20; # broken???
+        radius = 20;
       };
     };
   };

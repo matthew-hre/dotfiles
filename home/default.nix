@@ -12,8 +12,13 @@ in {
       inputs.nvf.homeManagerModules.default
       inputs.niri.homeModules.niri
 
+      ./bat.nix
+      ./btop.nix
       ./fastfetch
-      ./fuzzel
+      ./fuzzel.nix
+      ./fzf.nix
+      ./git.nix
+      ./helix.nix
       ./shell
       ./nvf
     ]
@@ -51,66 +56,6 @@ in {
     QT_QPA_PLATFORM = "wayland";
     SDL_VIDEODRIVER = "wayland";
     XDG_SESSION_TYPE = "wayland";
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "Matthew Hrehirchuk";
-    userEmail = "matthew_hre@outlook.com";
-    extraConfig = {
-      include = {
-        path = "/home/matthew_hre/.config/git/themes.gitconfig";
-      };
-      core = {pager = "bat";};
-      blame = {pager = "bat";};
-      delta = {
-        features = "line-numbers decorations";
-        hyperlinks = true;
-        syntax-theme = "Dracula";
-        plus-style = ''syntax "#003800"'';
-        minus-style = ''syntax "#3f0001"'';
-      };
-      url."git@github.com" = {
-        insteadOf = "gh";
-      };
-      url."git@github.com:matthew-hre/" = {
-        insteadOf = "mh:";
-      };
-    };
-  };
-
-  programs.fzf = {
-    enable = true;
-    colors = {
-      fg = "#f8f8f2";
-      "fg+" = "#f8f8f2";
-      bg = "-1";
-      "bg+" = "#44475a";
-      hl = "#bd93f9";
-      "hl+" = "#bd93f9";
-      gutter = "-1";
-      info = "#ffb86c";
-      prompt = "#50fa7b";
-      pointer = "#50FA7b";
-      marker = "#50FA7b";
-      spinner = "#ffb86c";
-      header = "#6272a4";
-    };
-  };
-
-  programs.btop = {
-    enable = true;
-    settings = {
-      color_theme = "Dracula";
-      theme_background = false;
-    };
-  };
-
-  programs.bat = {
-    enable = true;
-    config = {
-      theme = "Dracula";
-    };
   };
 
   programs.vscode.enable = true;
