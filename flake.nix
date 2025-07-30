@@ -20,6 +20,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nvf.url = "github:notashelf/nvf";
+
+    rpc-lsp.url = "github:matthew-hre/discord-rpc-lsp-flake";
   };
 
   outputs = inputs @ {
