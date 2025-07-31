@@ -4,6 +4,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     "${system}/core"
+    "${system}/shared"
     "${system}/hardware/bluetooth.nix"
     "${system}/hardware/fprintd.nix"
     "${system}/hardware/fwupd.nix"
@@ -40,41 +41,6 @@ in {
   };
 
   networking.hostName = "toad";
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  # Enable OpenGL
-  hardware.graphics.enable = true;
-
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-  };
-
-  environment.systemPackages = with pkgs; [
-    libnotify
-    nomacs
-    obsidian
-    vim
-  ];
-
-  programs = {
-    firefox = {
-      enable = true;
-    };
-    fish.enable = true;
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = ["matthew_hre"];
-    };
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

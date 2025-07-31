@@ -14,9 +14,5 @@
 
     MANPAGER = "sh -c 'col -bx | bat -l man -p'";
     MANROFFOPT = "-c";
-
-    ELECTRON_OZONE_PLATFORM_HINT = "wayland";
-
-    NIXOS_OZONE_WL = "1";
   };
 }

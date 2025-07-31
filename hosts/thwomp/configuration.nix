@@ -11,6 +11,7 @@ in {
   imports = [
     ./hardware-configuration.nix
     "${system}/core"
+    "${system}/shared"
     "${system}/hardware/amd.nix"
     "${system}/hardware/bluetooth.nix"
     "${system}/network"
@@ -44,19 +45,7 @@ in {
 
   services.xserver.enable = true;
 
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-
-  hardware.bluetooth.settings.General.Experimental = "true";
-  hardware.enableAllFirmware = true;
-  hardware.firmware = [
-    pkgs.firmwareLinuxNonfree
-  ];
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   boot.kernelPatches = [
     {
@@ -65,33 +54,15 @@ in {
     }
   ];
 
-  hardware.graphics.enable = true;
-
   environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   environment.systemPackages = with pkgs; [
-    libnotify
-    nomacs
-    obsidian
     prismlauncher
     protonup-qt
     tidal-hifi
-    vim
   ];
-
-  programs = {
-    firefox = {
-      enable = true;
-    };
-    fish.enable = true;
-    _1password-gui = {
-      enable = true;
-      polkitPolicyOwners = ["matthew_hre"];
-    };
-  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
