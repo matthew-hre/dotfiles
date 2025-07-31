@@ -22,6 +22,7 @@ in {
       greetd.kwallet = {
         enable = true;
         package = pkgs.kdePackages.kwallet-pam;
+        forceRun = true;
       };
     };
   };
