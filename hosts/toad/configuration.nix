@@ -15,6 +15,7 @@ in {
     "${system}/programs/niri.nix"
     "${system}/programs/steam.nix"
     "${system}/programs/xdg.nix"
+    "${system}/services/boot.nix"
     "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
@@ -22,23 +23,6 @@ in {
     "${system}/services/pipewire.nix"
     "${system}/services/power.nix"
   ];
-
-  # Bootloader
-  boot = {
-    loader = {
-      systemd-boot.enable = false;
-      efi.efiSysMountPoint = "/boot";
-      grub = {
-        enable = true;
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-        device = "nodev";
-        gfxmodeEfi = "2880x1920";
-        font = "${pkgs.nerd-fonts.fira-code}/share/fonts/truetype/NerdFonts/FiraCode/FiraCodeNerdFontMono-Regular.ttf";
-        fontSize = 24;
-      };
-    };
-  };
 
   networking.hostName = "toad";
 

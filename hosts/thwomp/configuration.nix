@@ -20,6 +20,7 @@ in {
     "${system}/programs/libre.nix"
     "${system}/programs/plasma.nix"
     "${system}/programs/steam.nix"
+    "${system}/services/boot.nix"
     "${system}/services/docker.nix"
     "${system}/services/greetd.nix"
     "${system}/services/openssh.nix"
@@ -36,7 +37,7 @@ in {
         enable = true;
         efiSupport = true;
         device = "nodev";
-        configurationLimit = 5;
+        configurationLimit = 8;
       };
     };
   };
