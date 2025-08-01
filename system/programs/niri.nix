@@ -1,6 +1,12 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
     swww # needs to be installed at the system level
+    qt6Packages.qt5compat
+    libsForQt5.qt5.qtgraphicaleffects
+    kdePackages.qtbase
+    kdePackages.qtdeclarative
+    kdePackages.qtstyleplugin-kvantum
+    wallust
   ];
 
   programs.niri = {

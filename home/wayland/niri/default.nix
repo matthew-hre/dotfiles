@@ -19,6 +19,7 @@ in {
         MOZ_ENABLE_WAYLAND = "1";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
+        QML_IMPORT_PATH = "${pkgs.qt6.qt5compat}/lib/qt-6/qml:${pkgs.qt6.qtdeclarative}/lib/qt-6/qml";
       };
 
       spawn-at-startup = [

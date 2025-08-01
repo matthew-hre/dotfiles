@@ -5,6 +5,7 @@
     ./hypridle
     ./hyprlock
     ./niri
+    ./quickshell.nix
     ./waybar
   ];
 
