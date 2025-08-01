@@ -23,4 +23,8 @@
       };
     };
   };
+
+  # turns out i've been using this the whole time!
+  # i believe niri uses this automatically, but it doesn't hurt to set it
+  services.gnome.gnome-keyring.enable = true;
 }

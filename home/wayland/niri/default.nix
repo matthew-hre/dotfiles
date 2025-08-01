@@ -23,9 +23,6 @@ in {
 
       spawn-at-startup = [
         (makeCommand "swww-daemon")
-        (makeCommand "kwalletd6")
-        (makeCommand "kded6")
-        (makeCommand "${pkgs.kdePackages.polkit-kde-agent-1}")
         (makeCommand "NetworkManager")
         (makeCommand "waybar")
         (makeCommand "xwayland-satellite")

@@ -1,7 +1,6 @@
 {
   hostname,
   lib,
-  pkgs,
   ...
 }: let
   toad = hostname == "toad";
@@ -13,17 +12,11 @@ in {
     pam.services = {
       hyprlock = {
         text = lib.mkIf toad "auth include login";
-        kwallet = {
-          enable = true;
-          package = pkgs.kdePackages.kwallet-pam;
-        };
+        enableGnomeKeyring = true;
       };
 
-      greetd.kwallet = {
-        enable = true;
-        package = pkgs.kdePackages.kwallet-pam;
-        forceRun = true;
-      };
+      greetd.enableGnomeKeyring = true;
+      login.enableGnomeKeyring = true;
     };
   };
 }
