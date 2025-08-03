@@ -11,6 +11,7 @@ in {
     [
       inputs.nvf.homeManagerModules.default
       inputs.niri.homeModules.niri
+      inputs.node-modules-gc.homeManagerModules.node-modules-gc
 
       ./bat.nix
       ./btop.nix
@@ -76,6 +77,13 @@ in {
       automatic = true;
       frequency = "monthly";
     };
+  };
+
+  nodeModules.gc = {
+    enable = true;
+    directories = ["$HOME/Projects"];
+    olderThanDays = 14;
+    frequency = "weekly";
   };
 
   # Let home Manager install and manage itself.
