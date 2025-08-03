@@ -19,6 +19,8 @@
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    node-modules-gc.url = "github:matthew-hre/node-modules-gc";
+
     nvf.url = "github:notashelf/nvf";
 
     quickshell = {
