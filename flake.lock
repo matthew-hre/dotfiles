@@ -382,11 +382,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1754249103,
-        "narHash": "sha256-siNc08VwQUo8iYbUwGGs31gcW2qtpt46kfZa6P8mrd0=",
+        "lastModified": 1754261271,
+        "narHash": "sha256-6kprzze5TWS+V//u0jwCEso0iTZ9A/ayrXxFALadzhg=",
         "owner": "matthew-hre",
         "repo": "node-modules-gc",
-        "rev": "df2a82f00c389794454aed26942b1c33d1345145",
+        "rev": "07932cdfaa8d74ba754d42999410de3270a37aec",
         "type": "github"
       },
       "original": {

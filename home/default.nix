@@ -79,7 +79,7 @@ in {
     };
   };
 
-  nodeModules.gc = {
+  services.nodeModules.gc = {
     enable = true;
     directories = ["$HOME/Projects"];
     olderThanDays = 14;
