@@ -2,6 +2,8 @@
   description = "NixOS configuration";
 
   inputs = {
+    dustpan.url = "github:matthew-hre/dustpan";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -18,8 +20,6 @@
     niri.url = "github:sodiboo/niri-flake";
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    node-modules-gc.url = "github:matthew-hre/node-modules-gc";
 
     nvf.url = "github:notashelf/nvf";
 

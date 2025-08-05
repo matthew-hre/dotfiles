@@ -11,7 +11,7 @@ in {
     [
       inputs.nvf.homeManagerModules.default
       inputs.niri.homeModules.niri
-      inputs.node-modules-gc.homeManagerModules.node-modules-gc
+      inputs.dustpan.homeManagerModules.dustpan
 
       ./bat.nix
       ./btop.nix
@@ -79,9 +79,10 @@ in {
     };
   };
 
-  services.nodeModules.gc = {
+  services.dustpan = {
     enable = true;
     directories = ["$HOME/Projects"];
+    foldersToClean = ["node_modules" ".next"];
     olderThanDays = 14;
     frequency = "weekly";
   };
