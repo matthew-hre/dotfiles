@@ -61,6 +61,14 @@ in {
 
   programs.vscode.enable = true;
 
+  programs.ssh = {
+    enable = true;
+    extraConfig = "
+Host *
+  IdentityAgent ~/.1password/agent.sock
+    ";
+  };
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
