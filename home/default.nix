@@ -11,7 +11,7 @@ in {
     [
       inputs.nvf.homeManagerModules.default
       inputs.niri.homeModules.niri
-      inputs.node-modules-gc.homeManagerModules.node-modules-gc
+      inputs.dustpan.homeManagerModules.dustpan
 
       ./bat.nix
       ./btop.nix
@@ -61,6 +61,14 @@ in {
 
   programs.vscode.enable = true;
 
+  programs.ssh = {
+    enable = true;
+    extraConfig = "
+Host *
+  IdentityAgent ~/.1password/agent.sock
+    ";
+  };
+
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -79,9 +87,10 @@ in {
     };
   };
 
-  services.nodeModules.gc = {
+  services.dustpan = {
     enable = true;
     directories = ["$HOME/Projects"];
+    foldersToClean = ["node_modules" ".next"];
     olderThanDays = 14;
     frequency = "weekly";
   };
