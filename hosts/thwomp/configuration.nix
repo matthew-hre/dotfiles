@@ -63,6 +63,7 @@ in {
     prismlauncher
     protonup-qt
     tidal-hifi
+    rocmPackages.rocm-smi
   ];
 
   # This value determines the NixOS release from which the default

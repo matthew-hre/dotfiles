@@ -3,7 +3,10 @@
   services.printing.enable = true;
 
   # Enable OpenGL
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
