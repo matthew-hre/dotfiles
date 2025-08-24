@@ -46,6 +46,19 @@ in {
 
   services.xserver.enable = true;
 
+  services.udev.extraRules = ''
+    ACTION=="add|change", SUBSYSTEM=="usb", ATTRS{idVendor}=="046d", ATTRS{idProduct}=="c547", ATTR{power/wakeup}="disabled"
+  '';
+
+  systemd.services."disable-xhc2-wakeup" = {
+    description = "disable wakeup from usb controller XHC2";
+    wantedBy = ["multi-user.target"];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = ''/bin/sh -c 'echo XHC2 > /proc/acpi/wakeup' '';
+    };
+  };
+
   systemd.services.NetworkManager-wait-online.enable = false;
 
   boot.kernelPatches = [
@@ -63,6 +76,7 @@ in {
     prismlauncher
     protonup-qt
     tidal-hifi
+    rocmPackages.rocm-smi
   ];
 
   # This value determines the NixOS release from which the default
