@@ -6,11 +6,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1754418641,
-        "narHash": "sha256-wQ8G/pkTeGcrvIiC62HlD54gpgzVTZIP03BjvOeAEgE=",
+        "lastModified": 1756061328,
+        "narHash": "sha256-Z4LmmGy23w7RpF12BhPtUyUte55q7sHfjvUPoShO/F0=",
         "owner": "matthew-hre",
         "repo": "dustpan",
-        "rev": "581e07d9662177aac34b3be4c420d09ae0c0fd24",
+        "rev": "cb3d57901b113143ff3e22db58e07de11c213639",
         "type": "github"
       },
       "original": {

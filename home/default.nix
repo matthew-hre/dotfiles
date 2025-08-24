@@ -85,14 +85,14 @@ Host *
     # Garbage Collector
     gc = {
       automatic = true;
-      frequency = "monthly";
+      dates = "monthly";
     };
   };
 
   services.dustpan = {
     enable = true;
-    directories = ["$HOME/Projects"];
-    foldersToClean = ["node_modules" ".next"];
+    roots = ["$HOME/Projects"];
+    targets = ["node_modules" ".next"];
     olderThanDays = 14;
     frequency = "weekly";
   };
