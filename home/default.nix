@@ -51,6 +51,8 @@ in {
     ltrace
     pciutils
     usbutils
+
+    xclip
   ];
 
   home.sessionVariables = {
