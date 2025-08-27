@@ -4,6 +4,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   system = ../../system;
@@ -26,6 +27,8 @@ in {
     "${system}/services/openssh.nix"
     "${system}/services/openvpn.nix"
     "${system}/services/pipewire.nix"
+
+    inputs.solaar.nixosModules.default
   ];
 
   boot = {
@@ -78,6 +81,10 @@ in {
     tidal-hifi
     rocmPackages.rocm-smi
   ];
+
+  services.solaar.enable = true;
+
+  hardware.logitech.wireless.enable = true;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
