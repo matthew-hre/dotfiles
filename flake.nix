@@ -25,6 +25,11 @@
 
     rpc-lsp.url = "github:matthew-hre/discord-rpc-lsp-flake";
 
+    sherlock = {
+      url = "github:Skxxtz/sherlock";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";

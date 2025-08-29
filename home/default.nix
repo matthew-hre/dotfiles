@@ -28,6 +28,11 @@ in {
   home.username = "matthew_hre";
   home.homeDirectory = "/home/matthew_hre";
 
+  programs.sherlock = {
+    enable = true;
+    systemd.enable = true;
+  };
+
   home.packages = with pkgs; [
     zip
     xz
