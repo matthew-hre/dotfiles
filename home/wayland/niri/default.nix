@@ -223,6 +223,24 @@ in {
         }
         {
           matches = [
+            {
+              app-id = "com.network.manager";
+            }
+            {
+              title = "^Network Manager$";
+            }
+          ];
+          open-floating = true;
+          default-window-height.fixed = 400;
+          default-column-width.proportion = 0.25;
+          default-floating-position = {
+            x = 10;
+            y = 10;
+            relative-to = "top-right";
+          };
+        }
+        {
+          matches = [
             {is-floating = true;}
           ];
           shadow.enable = true;

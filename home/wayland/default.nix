@@ -24,5 +24,7 @@
     brightnessctl
 
     xwayland-satellite
+
+    nmgui
   ];
 }

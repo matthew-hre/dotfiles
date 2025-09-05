@@ -55,6 +55,7 @@ in {
         format-ethernet = icons.network.ethernet;
         format-wifi = "{icon} {essid}";
         format-icons = icons.network.strength;
+        on-click = "nmgui";
       };
 
       bluetooth = {
