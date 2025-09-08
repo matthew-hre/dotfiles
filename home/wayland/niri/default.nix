@@ -14,7 +14,6 @@ in {
     settings = {
       environment = {
         CLUTTER_BACKEND = "wayland";
-        DISPLAY = ":0";
         GDK_BACKEND = "wayland,x11";
         MOZ_ENABLE_WAYLAND = "1";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -25,7 +24,6 @@ in {
         (makeCommand "swww-daemon")
         (makeCommand "NetworkManager")
         (makeCommand "waybar")
-        (makeCommand "xwayland-satellite")
         {command = ["wl-paste" "--watch" "cliphist" "store"];}
       ];
 
