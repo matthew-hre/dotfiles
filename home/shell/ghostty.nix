@@ -18,7 +18,6 @@ in {
         listsAsDuplicateKeys = true;
       } {
         confirm-close-surface = false;
-        copy-on-select = true;
         font-family = "FiraCode Nerd Font";
         font-size = 11;
         font-style = "Medium";
@@ -27,7 +26,7 @@ in {
         shell-integration = "fish";
         window-inherit-working-directory = true;
         theme = "Dracula";
-        window-decoration = false;
+        window-decoration = true;
         window-theme = "ghostty";
         window-padding-x = 16;
         window-padding-y = 16;

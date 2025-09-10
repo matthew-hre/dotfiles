@@ -10,7 +10,7 @@
       origin = "top-right";
       scale = 0;
       offset = "9x9";
-      notification_limit = 0;
+      notification_limit = 3;
 
       # progress bar
       progress_bar = true;
@@ -47,14 +47,14 @@
       show_indicators = "yes";
 
       icon_position = "left";
-      min_icon_size = 0;
+      min_icon_size = 24;
       max_icon_size = 32;
       icon_path = "${pkgs.papirus-icon-theme}";
 
       sticky_history = "yes";
       history_length = 20;
 
-      corner_radius = 10;
+      corner_radius = 4;
     };
 
     settings.urgency_low = {
