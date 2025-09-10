@@ -17,7 +17,7 @@ in {
       ./btop.nix
       ./fastfetch
       ./fuzzel.nix
-      ./fzf.nix
+      # ./fzf.nix
       ./git.nix
       ./helix.nix
       ./shell
@@ -37,7 +37,9 @@ in {
 
     ripgrep
     eza
-    tldr
+    fd
+
+    television
 
     gh
     lazygit

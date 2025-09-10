@@ -21,6 +21,7 @@
       end
 
       zoxide init fish | source
+      tv init fish | source
     '';
     shellAliases = {
       ls = "eza -la --octal-permissions --git";
@@ -31,7 +32,7 @@
       ".." = "cd ..";
       ":q" = "exit";
       copy = "xclip -selection clipboard";
-      fzf = "fzf --preview 'bat --color=always --style=numbers --line-range=:500 {}'";
+      find = "fd";
     };
     plugins = [
       {

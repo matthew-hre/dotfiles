@@ -54,7 +54,7 @@
       sticky_history = "yes";
       history_length = 20;
 
-      corner_radius = 4;
+      corner_radius = 11;
     };
 
     settings.urgency_low = {
