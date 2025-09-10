@@ -22,6 +22,7 @@ in {
       ./helix.nix
       ./shell
       ./nvf
+      ./direnv.nix
     ]
     ++ lib.optional toad ./wayland;
 

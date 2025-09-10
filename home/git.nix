@@ -3,6 +3,7 @@
     enable = true;
     userName = "Matthew Hrehirchuk";
     userEmail = "matthew_hre@outlook.com";
+
     extraConfig = {
       include = {
         path = "/home/matthew_hre/.config/git/themes.gitconfig";
