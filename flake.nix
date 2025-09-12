@@ -36,62 +36,42 @@
     home-manager,
     nixpkgs,
     ...
-  }: {
+  }: let
+    system = "x86_64-linux";
+
+    mkHost = hostname: modules:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {inherit inputs hostname;};
+
+        modules =
+          modules
+          ++ [
+            home-manager.nixosModules.home-manager
+            {
+              environment.systemPackages = [
+                ghostty.packages.${system}.default
+              ];
+
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = {inherit inputs hostname;};
+                users.matthew_hre = import ./home/default.nix;
+              };
+            }
+          ];
+      };
+  in {
     nixosConfigurations = {
-      toad = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        specialArgs = {
-          inherit inputs;
-          hostname = "toad";
-        };
-
-        modules = [
-          ./hosts/toad/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
-            nixpkgs.overlays = [
-              inputs.niri.overlays.niri
-            ];
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              hostname = "toad";
-            };
-            home-manager.users.matthew_hre = import ./home/default.nix;
-          }
-        ];
-      };
-      thwomp = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-
-        specialArgs = {
-          inherit inputs;
-          hostname = "thwomp";
-        };
-
-        modules = [
-          ./hosts/thwomp/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            environment.systemPackages = [
-              ghostty.packages.x86_64-linux.default
-            ];
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit inputs;
-              hostname = "thwomp";
-            };
-            home-manager.users.matthew_hre = import ./home/default.nix;
-          }
-        ];
-      };
+      toad = mkHost "toad" [
+        ./hosts/toad/configuration.nix
+        {nixpkgs.overlays = [inputs.niri.overlays.niri];}
+      ];
+      thwomp = mkHost "thwomp" [./hosts/thwomp/configuration.nix];
     };
-    formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
+
+    formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
 }
