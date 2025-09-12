@@ -4,5 +4,5 @@
     enableOnBoot = false;
   };
 
-  systemd.services."docker.socket".wantedBy = [ "sockets.target" ];
+  systemd.services."docker.socket".wantedBy = ["sockets.target"];
 }

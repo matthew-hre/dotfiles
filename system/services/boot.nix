@@ -1,5 +1,5 @@
 {
-boot = {
+  boot = {
     loader = {
       systemd-boot.enable = false;
       efi.efiSysMountPoint = "/boot";
