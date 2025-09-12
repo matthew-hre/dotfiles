@@ -65,14 +65,14 @@ in {
         focus-ring = {
           enable = false;
           width = 1;
-          active.color = "#BD93F9";
+          active.color = "#44475A";
           inactive.color = "#282A36";
         };
 
         border = {
           enable = true;
           width = 1;
-          active.color = "#BD93F9";
+          active.color = "#44475A";
           inactive.color = "#282A36";
         };
       };

@@ -26,7 +26,7 @@
       horizontal_padding = 10;
       text_icon_padding = 0;
       frame_width = 1;
-      frame_color = "#BD93F9";
+      frame_color = "#44475A";
       separator_color = "frame";
       sort = "no";
       idle_threshold = 120;

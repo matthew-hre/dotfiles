@@ -2,14 +2,16 @@
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" "-c";
   in {
-    "Mod+Space".action.spawn = ["fuzzel"];
+    "Mod+Space".action.spawn = ["vicinae" "vicinae://toggle"]; # fuzzel
     "Mod+Return".action.spawn = ["ghostty" "+new-window"];
     "Mod+Q".action = close-window;
     "Mod+F".action = maximize-column;
     "Mod+Shift+F".action = fullscreen-window;
     "Mod+G".action = toggle-window-floating;
     "Mod+C".action = center-column;
-    "Mod+V".action = sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
+    # "Mod+V".action = sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
+    "Mod+V".action.spawn = ["vicinae" "vicinae://extensions/vicinae/clipboard/history"];
+    "Mod+Period".action.spawn = ["vicinae" "vicinae://extensions/vicinae/vicinae/search-emojis"];
 
     "Mod+L".action.spawn = ["hyprlock"];
 

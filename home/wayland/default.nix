@@ -1,5 +1,11 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
+    inputs.niri.homeModules.niri
+
     ./dunst
     ./gtk.nix
     ./hypridle

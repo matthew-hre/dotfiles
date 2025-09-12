@@ -10,13 +10,13 @@ in {
   imports =
     [
       inputs.nvf.homeManagerModules.default
-      inputs.niri.homeModules.niri
       inputs.dustpan.homeManagerModules.dustpan
+      inputs.vicinae.homeManagerModules.default
 
       ./bat.nix
       ./btop.nix
       ./fastfetch
-      ./fuzzel.nix
+      # ./fuzzel.nix
       # ./fzf.nix
       ./git.nix
       ./helix.nix
@@ -73,6 +73,8 @@ Host *
   IdentityAgent ~/.1password/agent.sock
     ";
   };
+
+  services.vicinae.enable = true;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
