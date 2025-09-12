@@ -17,7 +17,7 @@
         selection-match = "8be9fdff";
         selection = "BD93F9FF";
         selection-text = "282A36ff";
-        border = "bd93f9ff";
+        border = "44475Aff";
       };
       border = {
         width = 2;

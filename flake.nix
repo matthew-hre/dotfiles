@@ -23,8 +23,6 @@
 
     nvf.url = "github:notashelf/nvf";
 
-    rpc-lsp.url = "github:matthew-hre/discord-rpc-lsp-flake";
-
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";

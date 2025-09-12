@@ -16,7 +16,7 @@ in {
       ./bat.nix
       ./btop.nix
       ./fastfetch
-      # ./fuzzel.nix
+      ./fuzzel.nix
       # ./fzf.nix
       ./git.nix
       ./helix.nix
