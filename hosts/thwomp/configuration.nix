@@ -64,6 +64,9 @@ in {
 
   systemd.services.NetworkManager-wait-online.enable = false;
 
+  hardware.enableAllFirmware = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   boot.kernelPatches = [
     {
       name = "btusb-patch";
