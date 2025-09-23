@@ -74,7 +74,13 @@ Host *
     ";
   };
 
-  services.vicinae.enable = true;
+  services.vicinae = {
+    enable = true;
+    settings = {
+      popToRootOnClose = true;
+      theme.name = "dracula";
+    };
+  };
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
