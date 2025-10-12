@@ -56,6 +56,8 @@ in {
     usbutils
 
     xclip
+
+    wireshark
   ];
 
   home.sessionVariables = {

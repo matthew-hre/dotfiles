@@ -8,5 +8,6 @@
       enable = true;
       polkitPolicyOwners = ["matthew_hre"];
     };
+    wireshark.enable = true;
   };
 }
