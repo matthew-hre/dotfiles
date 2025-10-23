@@ -20,6 +20,10 @@
           end
       end
 
+      function copyfile
+          cat $argv | wl-copy
+      end
+
       zoxide init fish | source
       tv init fish | source
     '';
@@ -31,7 +35,6 @@
       lg = "lazygit";
       ".." = "cd ..";
       ":q" = "exit";
-      copy = "xclip -selection clipboard";
       find = "fd";
     };
     plugins = [
