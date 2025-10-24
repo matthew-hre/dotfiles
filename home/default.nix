@@ -9,10 +9,6 @@
 in {
   imports =
     [
-      inputs.nvf.homeManagerModules.default
-      inputs.dustpan.homeManagerModules.dustpan
-      inputs.vicinae.homeManagerModules.default
-
       ./bat.nix
       ./btop.nix
       ./direnv.nix

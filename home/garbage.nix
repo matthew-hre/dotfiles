@@ -1,4 +1,8 @@
-{
+{imports, ...}: {
+  imports = [
+    inputs.dustpan.homeManagerModules.dustpan
+  ];
+
   nix = {
     gc = {
       automatic = true;

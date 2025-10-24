@@ -1,5 +1,7 @@
-{
+{inputs, ...}: {
   imports = [
+    inputs.nvf.homeManagerModules.default
+
     ./languages.nix
   ];
 
