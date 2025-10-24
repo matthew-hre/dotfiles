@@ -76,6 +76,7 @@ in {
 
   environment.sessionVariables = {
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    OZONE_PLATFORM = "wayland";
   };
 
   environment.systemPackages = with pkgs; [
@@ -83,6 +84,7 @@ in {
     protonup-qt
     tidal-hifi
     rocmPackages.rocm-smi
+    satisfactorymodmanager
   ];
 
   services.solaar.enable = true;
