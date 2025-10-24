@@ -1,10 +1,10 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: {
   config =
-    lib.mkIf config.users.matthew_hre.configs.ssh {
+    lib.mkIf osConfig.users.matthew_hre.configs.ssh {
       programs.ssh = {
         enable = true;
         extraConfig = "

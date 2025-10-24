@@ -1,9 +1,9 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.direnv {
+  config = lib.mkIf osConfig.users.matthew_hre.configs.direnv {
     programs.direnv = {
       enable = true;
       nix-direnv.enable = true;

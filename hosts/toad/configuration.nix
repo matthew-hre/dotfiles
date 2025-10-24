@@ -24,6 +24,24 @@ in {
     "${system}/services/power.nix"
   ];
 
+  users.matthew_hre = {
+    enable = true;
+    configs = {
+      bat = true;
+      btop = true;
+      direnv = true;
+      fastfetch = true;
+      fuzzel = true;
+      garbage = true;
+      git = true;
+      vicinae = true;
+      helix = true;
+      nvf = true;
+      shell = true;
+      wayland = true;
+    };
+  };
+
   networking.hostName = "toad";
 
   # This value determines the NixOS release from which the default

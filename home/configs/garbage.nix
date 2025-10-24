@@ -1,14 +1,14 @@
 {
-  config,
-  imports,
+  osConfig,
+  inputs,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.garbage {
-    imports = [
-      inputs.dustpan.homeManagerModules.dustpan
-    ];
+  imports = lib.optionals osConfig.users.matthew_hre.configs.garbage [
+    inputs.dustpan.homeManagerModules.dustpan
+  ];
 
+  config = lib.mkIf osConfig.users.matthew_hre.configs.garbage {
     nix = {
       gc = {
         automatic = true;

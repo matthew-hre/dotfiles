@@ -1,9 +1,9 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.fuzzel {
+  config = lib.mkIf osConfig.users.matthew_hre.configs.fuzzel {
     programs.fuzzel = {
       enable = true;
       settings = {

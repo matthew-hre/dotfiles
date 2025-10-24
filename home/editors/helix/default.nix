@@ -1,9 +1,9 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.helix {
+  config = lib.mkIf osConfig.users.matthew_hre.configs.helix {
     programs.helix = {
       enable = true;
       settings = {

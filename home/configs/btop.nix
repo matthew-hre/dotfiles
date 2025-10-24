@@ -1,10 +1,10 @@
 {
-  config,
+  osConfig,
   pkgs,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.btop {
+  config = lib.mkIf osConfig.users.matthew_hre.configs.btop {
     programs.btop = {
       enable = true;
       package = pkgs.btop.overrideAttrs (old: rec {

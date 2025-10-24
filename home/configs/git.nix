@@ -1,9 +1,9 @@
 {
-  config,
+  osConfig,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.git {
+  config = lib.mkIf osConfig.users.matthew_hre.configs.git {
     programs.git = {
       enable = true;
       userName = "Matthew Hrehirchuk";

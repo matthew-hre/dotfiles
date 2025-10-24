@@ -1,22 +1,22 @@
 {
-  config,
   inputs,
   lib,
+  osConfig,
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.wayland {
-    imports = [
-      inputs.niri.homeModules.niri
+  imports = lib.optionals osConfig.users.matthew_hre.configs.wayland [
+    inputs.niri.homeModules.niri
 
-      ./dunst
-      ./gtk.nix
-      ./hypridle
-      ./hyprlock
-      ./niri
-      ./waybar
-    ];
+    ./dunst
+    ./gtk.nix
+    ./hypridle
+    ./hyprlock
+    ./niri
+    ./waybar
+  ];
 
+  config = lib.mkIf osConfig.users.matthew_hre.configs.wayland {
     home.packages = with pkgs; [
       amberol
       (celluloid.override {youtubeSupport = true;})

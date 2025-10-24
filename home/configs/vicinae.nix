@@ -1,14 +1,14 @@
 {
-  config,
+  osConfig,
   inputs,
   lib,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.vicinae {
-    imports = [
-      inputs.vicinae.homeManagerModules.default
-    ];
+  imports = lib.optionals osConfig.users.matthew_hre.configs.vicinae [
+    inputs.vicinae.homeManagerModules.default
+  ];
 
+  config = lib.mkIf osConfig.users.matthew_hre.configs.vicinae {
     services.vicinae = {
       enable = true;
       settings = {

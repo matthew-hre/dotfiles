@@ -1,10 +1,10 @@
 {
-  config,
+  osConfig,
   lib,
   pkgs,
   ...
 }: {
-  config = lib.mkIf config.users.matthew_hre.configs.fastfetch {
+  config = lib.mkIf osConfig.users.matthew_hre.configs.fastfetch {
     programs.fastfetch = {
       enable = true;
       package = pkgs.fastfetch;
