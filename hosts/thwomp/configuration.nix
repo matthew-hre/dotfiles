@@ -31,20 +31,6 @@ in {
     inputs.solaar.nixosModules.default
   ];
 
-  boot = {
-    loader = {
-      systemd-boot.enable = false;
-      efi.efiSysMountPoint = "/boot";
-      efi.canTouchEfiVariables = true;
-      grub = {
-        enable = true;
-        efiSupport = true;
-        device = "nodev";
-        configurationLimit = 8;
-      };
-    };
-  };
-
   users.matthew_hre = {
     enable = true;
     configs = {
