@@ -1,13 +1,20 @@
-{inputs, ...}: {
-  imports = [
-    inputs.vicinae.homeManagerModules.default
-  ];
+{
+  config,
+  inputs,
+  lib,
+  ...
+}: {
+  config = lib.mkIf config.users.matthew_hre.configs.vicinae {
+    imports = [
+      inputs.vicinae.homeManagerModules.default
+    ];
 
-  services.vicinae = {
-    enable = true;
-    settings = {
-      popToRootOnClose = true;
-      theme.name = "dracula";
+    services.vicinae = {
+      enable = true;
+      settings = {
+        popToRootOnClose = true;
+        theme.name = "dracula";
+      };
     };
   };
 }
