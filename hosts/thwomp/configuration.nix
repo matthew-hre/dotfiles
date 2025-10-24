@@ -45,7 +45,34 @@ in {
     };
   };
 
-  networking.hostName = "thwomp"; # Define your hostname.
+  users.matthew_hre = {
+    enable = true;
+    configs = {
+      bat = true;
+      btop = true;
+      direnv = true;
+      fastfetch = true;
+      fuzzel = true;
+      garbage = true;
+      git = true;
+      ssh = true;
+      vicinae = false;
+      helix = true;
+      nvf = true;
+
+      shell = {
+        enable = true;
+        fish = true;
+        ghostty = true;
+      };
+
+      wayland = {
+        enable = false;
+      };
+    };
+  };
+
+  networking.hostName = "thwomp";
 
   services.xserver.enable = true;
 

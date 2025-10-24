@@ -1,42 +1,42 @@
 {
   inputs,
+  lib,
+  osConfig,
   pkgs,
   ...
-}: {
-  imports = [
-    inputs.niri.homeModules.niri
+}: let
+  cfg = osConfig.users.matthew_hre.configs.wayland;
+in
+  lib.optionalAttrs cfg.enable {
+    imports =
+      lib.optional cfg.niri inputs.niri.homeModules.niri
+      ++ lib.optional cfg.dunst ./dunst
+      ++ lib.optional cfg.gtk ./gtk
+      ++ lib.optional cfg.hypridle ./hypridle
+      ++ lib.optional cfg.hyprlock ./hyprlock
+      ++ lib.optional cfg.niri ./niri
+      ++ lib.optional cfg.waybar ./waybar
+      ++ lib.optional cfg.wlsunset ./wlsunset;
 
-    ./dunst
-    ./gtk.nix
-    ./hypridle
-    ./hyprlock
-    ./niri
-    ./waybar
-  ];
+    config = {
+      home.packages = with pkgs; [
+        amberol
+        (celluloid.override {youtubeSupport = true;})
+        file-roller
+        loupe
+        nautilus
+        pwvucontrol
 
-  home.packages = with pkgs; [
-    amberol
-    (celluloid.override {youtubeSupport = true;})
-    file-roller
-    loupe
-    nautilus
-    pwvucontrol
+        wl-clipboard
+        cliphist
+        hyprpicker
 
-    wl-clipboard
-    cliphist
-    hyprpicker
+        networkmanagerapplet
+        brightnessctl
 
-    networkmanagerapplet
-    brightnessctl
+        xwayland-satellite
 
-    xwayland-satellite
-
-    nmgui
-  ];
-
-  services.wlsunset = {
-    enable = true;
-    latitude = 51;
-    longitude = -114;
-  };
-}
+        nmgui
+      ];
+    };
+  }

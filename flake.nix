@@ -49,6 +49,7 @@
           modules
           ++ [
             home-manager.nixosModules.home-manager
+            ./home
             {
               environment.systemPackages = [
                 ghostty.packages.${system}.default
@@ -58,7 +59,6 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = {inherit inputs hostname;};
-                users.matthew_hre = import ./home/default.nix;
               };
             }
           ];
