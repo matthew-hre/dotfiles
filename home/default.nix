@@ -15,13 +15,15 @@ in {
 
       ./bat.nix
       ./btop.nix
+      ./direnv.nix
       ./fastfetch
       ./fuzzel.nix
       ./git.nix
       ./helix.nix
       ./shell
+      ./ssh.nix
       ./nvf
-      ./direnv.nix
+      ./vicinae.nix
     ]
     ++ lib.optional toad ./wayland;
 
@@ -67,22 +69,6 @@ in {
 
   programs.vscode.enable = true;
 
-  programs.ssh = {
-    enable = true;
-    extraConfig = "
-Host *
-  IdentityAgent ~/.1password/agent.sock
-    ";
-  };
-
-  services.vicinae = {
-    enable = true;
-    settings = {
-      popToRootOnClose = true;
-      theme.name = "dracula";
-    };
-  };
-
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
@@ -92,22 +78,6 @@ Host *
   # the home Manager release notes for a list of state version
   # changes in each release.
   home.stateVersion = "23.11";
-
-  nix = {
-    # Garbage Collector
-    gc = {
-      automatic = true;
-      dates = "monthly";
-    };
-  };
-
-  services.dustpan = {
-    enable = true;
-    roots = ["$HOME/Projects"];
-    targets = ["node_modules" ".next" ".zig-cache"];
-    olderThanDays = 14;
-    frequency = "weekly";
-  };
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
