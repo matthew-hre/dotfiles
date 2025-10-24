@@ -34,6 +34,7 @@ in {
       fuzzel = true;
       garbage = true;
       git = true;
+      ssh = true;
       vicinae = true;
       helix = true;
       nvf = true;
