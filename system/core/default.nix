@@ -1,7 +1,6 @@
 {
   imports = [
     ../nix
-    ./users.nix
     ./security.nix
   ];
   time.timeZone = "America/Edmonton";
