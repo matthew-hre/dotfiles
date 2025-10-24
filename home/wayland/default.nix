@@ -4,8 +4,9 @@
   osConfig,
   pkgs,
   ...
-}: {
-  imports = lib.optionals osConfig.users.matthew_hre.configs.wayland [
+}:
+lib.optionalAttrs osConfig.users.matthew_hre.configs.wayland {
+  imports = [
     inputs.niri.homeModules.niri
 
     ./dunst
@@ -16,7 +17,7 @@
     ./waybar
   ];
 
-  config = lib.mkIf osConfig.users.matthew_hre.configs.wayland {
+  config = {
     home.packages = with pkgs; [
       amberol
       (celluloid.override {youtubeSupport = true;})

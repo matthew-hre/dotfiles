@@ -56,7 +56,7 @@ in {
       garbage = true;
       git = true;
       ssh = true;
-      vicinae = true;
+      vicinae = false;
       helix = true;
       nvf = true;
       shell = true;

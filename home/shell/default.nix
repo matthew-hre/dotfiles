@@ -2,13 +2,14 @@
   osConfig,
   lib,
   ...
-}: {
-  imports = lib.optionals osConfig.users.matthew_hre.configs.shell [
+}:
+lib.optionalAttrs osConfig.users.matthew_hre.configs.shell {
+  imports = [
     ./fish.nix
     ./ghostty.nix
   ];
 
-  config = lib.mkIf osConfig.users.matthew_hre.configs.shell {
+  config = {
     home.sessionVariables = {
       EDITOR = "nvim";
       BROWSER = "firefox";

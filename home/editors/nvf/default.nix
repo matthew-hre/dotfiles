@@ -3,14 +3,15 @@
   inputs,
   lib,
   ...
-}: {
-  imports = lib.optionals osConfig.users.matthew_hre.configs.nvf [
+}:
+lib.optionalAttrs osConfig.users.matthew_hre.configs.nvf {
+  imports = [
     inputs.nvf.homeManagerModules.default
 
     ./languages.nix
   ];
 
-  config = lib.mkIf osConfig.users.matthew_hre.configs.nvf {
+  config = {
     programs.nvf = {
       enable = true;
 
