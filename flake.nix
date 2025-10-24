@@ -49,7 +49,7 @@
           modules
           ++ [
             home-manager.nixosModules.home-manager
-            ./home/options.nix
+            ./home
             {
               environment.systemPackages = [
                 ghostty.packages.${system}.default
