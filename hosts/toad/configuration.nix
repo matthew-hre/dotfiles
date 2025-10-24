@@ -38,8 +38,23 @@ in {
       vicinae = true;
       helix = true;
       nvf = true;
-      shell = true;
-      wayland = true;
+      
+      shell = {
+        enable = true;
+        fish = true;
+        ghostty = true;
+      };
+      
+      wayland = {
+        enable = true;
+        dunst = true;
+        gtk = true;
+        hypridle = true;
+        hyprlock = true;
+        niri = true;
+        waybar = true;
+        wlsunset = true;
+      };
     };
   };
 

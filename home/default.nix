@@ -25,8 +25,23 @@
       vicinae = lib.mkEnableOption "enable vicinae configuration";
       helix = lib.mkEnableOption "enable helix configuration";
       nvf = lib.mkEnableOption "enable nvf (neovim) configuration";
-      shell = lib.mkEnableOption "enable shell configuration";
-      wayland = lib.mkEnableOption "enable wayland configuration";
+      
+      shell = {
+        enable = lib.mkEnableOption "enable shell configuration";
+        fish = lib.mkEnableOption "enable fish shell configuration";
+        ghostty = lib.mkEnableOption "enable ghostty terminal configuration";
+      };
+      
+      wayland = {
+        enable = lib.mkEnableOption "enable wayland configuration";
+        dunst = lib.mkEnableOption "enable dunst notification daemon";
+        gtk = lib.mkEnableOption "enable gtk configuration";
+        hypridle = lib.mkEnableOption "enable hypridle configuration";
+        hyprlock = lib.mkEnableOption "enable hyprlock configuration";
+        niri = lib.mkEnableOption "enable niri window manager";
+        waybar = lib.mkEnableOption "enable waybar configuration";
+        wlsunset = lib.mkEnableOption "enable wlsunset (blue light filter)";
+      };
     };
   };
 
