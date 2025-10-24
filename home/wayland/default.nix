@@ -1,9 +1,11 @@
 {
   inputs,
+  lib,
+  osConfig,
   pkgs,
   ...
 }: {
-  imports = [
+  imports = lib.optionals osConfig.users.matthew_hre.configs.wayland [
     inputs.niri.homeModules.niri
 
     ./dunst
@@ -14,29 +16,31 @@
     ./waybar
   ];
 
-  home.packages = with pkgs; [
-    amberol
-    (celluloid.override {youtubeSupport = true;})
-    file-roller
-    loupe
-    nautilus
-    pwvucontrol
+  config = lib.mkIf osConfig.users.matthew_hre.configs.wayland {
+    home.packages = with pkgs; [
+      amberol
+      (celluloid.override {youtubeSupport = true;})
+      file-roller
+      loupe
+      nautilus
+      pwvucontrol
 
-    wl-clipboard
-    cliphist
-    hyprpicker
+      wl-clipboard
+      cliphist
+      hyprpicker
 
-    networkmanagerapplet
-    brightnessctl
+      networkmanagerapplet
+      brightnessctl
 
-    xwayland-satellite
+      xwayland-satellite
 
-    nmgui
-  ];
+      nmgui
+    ];
 
-  services.wlsunset = {
-    enable = true;
-    latitude = 51;
-    longitude = -114;
+    services.wlsunset = {
+      enable = true;
+      latitude = 51;
+      longitude = -114;
+    };
   };
 }
