@@ -19,6 +19,7 @@
       direnv = lib.mkEnableOption "enable direnv configuration";
       fastfetch = lib.mkEnableOption "enable fastfetch configuration";
       fuzzel = lib.mkEnableOption "enable fuzzel configuration";
+      garbage = lib.mkEnableOption "enable garbage configuration";
       git = lib.mkEnableOption "enable git configuration";
       ssh = lib.mkEnableOption "enable ssh configuration";
       vicinae = lib.mkEnableOption "enable vicinae configuration";
@@ -37,6 +38,7 @@
         ./configs/direnv.nix
         ./configs/fastfetch
         ./configs/fuzzel.nix
+        ./configs/garbage.nix
         ./configs/git.nix
         ./configs/ssh.nix
         ./configs/vicinae.nix

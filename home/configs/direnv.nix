@@ -1,4 +1,8 @@
-{config, lib, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   config = lib.mkIf config.users.matthew_hre.configs.direnv {
     programs.direnv = {
       enable = true;
