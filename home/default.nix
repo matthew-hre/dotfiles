@@ -25,13 +25,13 @@
       vicinae = lib.mkEnableOption "enable vicinae configuration";
       helix = lib.mkEnableOption "enable helix configuration";
       nvf = lib.mkEnableOption "enable nvf (neovim) configuration";
-      
+
       shell = {
         enable = lib.mkEnableOption "enable shell configuration";
         fish = lib.mkEnableOption "enable fish shell configuration";
         ghostty = lib.mkEnableOption "enable ghostty terminal configuration";
       };
-      
+
       wayland = {
         enable = lib.mkEnableOption "enable wayland configuration";
         dunst = lib.mkEnableOption "enable dunst notification daemon";

@@ -1,12 +1,23 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" "-c";
     powerMenu = pkgs.writeShellScript "power-menu" ''
-     switch (echo -e " Lock\n Reboot\n⏻ Shutdown" | fuzzel --dmenu -l 7 -p "󰚥 ")
-        case "*Lock"; hyprlock
-        case "*Reboot"; systemctl reboot
-        case "*Shutdown"; systemctl poweroff
-    endnv fish
+      choice=$(echo -e " Lock\n Reboot\n⏻ Shutdown" | fuzzel --dmenu -l 7 -p "󰚥 ")
+      case "$choice" in
+        *"Lock")
+          hyprlock
+          ;;
+        *"Reboot")
+          systemctl reboot
+          ;;
+        *"Shutdown")
+          systemctl poweroff
+          ;;
+      esac
     '';
   in {
     "Mod+Space".action.spawn = ["vicinae" "vicinae://toggle"];
@@ -47,7 +58,7 @@
 
     "Mod+Shift+Slash".action = show-hotkey-overlay;
 
-    "Ctrl+Alt+Delete".action.spawn = [powerMenu];
+    "Ctrl+Alt+Delete".action.spawn = ["${powerMenu}"];
 
     "XF86AudioRaiseVolume".action.spawn = ["wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+" "--limit" "1.0"];
     "XF86AudioRaiseVolume".allow-when-locked = true;

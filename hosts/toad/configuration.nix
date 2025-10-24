@@ -38,13 +38,13 @@ in {
       vicinae = true;
       helix = true;
       nvf = true;
-      
+
       shell = {
         enable = true;
         fish = true;
         ghostty = true;
       };
-      
+
       wayland = {
         enable = true;
         dunst = true;
