@@ -1,3 +1,4 @@
 result
 .direnv
 nixos-switch.log
+.pre-commit-config.yaml

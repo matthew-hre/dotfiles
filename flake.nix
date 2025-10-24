@@ -4,6 +4,9 @@
   inputs = {
     dustpan.url = "github:matthew-hre/dustpan";
 
+    git-hooks.url = "github:cachix/git-hooks.nix";
+    git-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -35,6 +38,7 @@
     ghostty,
     home-manager,
     nixpkgs,
+    self,
     ...
   }: let
     system = "x86_64-linux";
@@ -71,6 +75,23 @@
       ];
       thwomp = mkHost "thwomp" [./hosts/thwomp/configuration.nix];
     };
+
+    checks.${system} = {
+      pre-commit-check = inputs.git-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          alejandra.enable = true;
+        };
+      };
+    };
+
+    devShells.${system}.default = let
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+      pkgs.mkShell {
+        inherit (self.checks.${system}.pre-commit-check) shellHook;
+        buildInputs = self.checks.${system}.pre-commit-check.enabledPackages;
+      };
 
     formatter.${system} = nixpkgs.legacyPackages.${system}.alejandra;
   };
