@@ -2,7 +2,6 @@
   imports = [
     ./fish.nix
     ./ghostty.nix
-    ./kitty.nix
   ];
 
   home.sessionVariables = {

@@ -2,14 +2,14 @@
   programs.niri.settings.binds = with config.lib.niri.actions; let
     sh = spawn "sh" "-c";
   in {
-    "Mod+Space".action.spawn = ["vicinae" "vicinae://toggle"]; # fuzzel
+    "Mod+Space".action.spawn = ["vicinae" "vicinae://toggle"];
     "Mod+Return".action.spawn = ["ghostty" "+new-window"];
     "Mod+Q".action = close-window;
     "Mod+F".action = maximize-column;
     "Mod+Shift+F".action = fullscreen-window;
     "Mod+G".action = toggle-window-floating;
     "Mod+C".action = center-column;
-    # "Mod+V".action = sh "cliphist list | fuzzel --dmenu | cliphist decode | wl-copy";
+
     "Mod+V".action.spawn = ["vicinae" "vicinae://extensions/vicinae/clipboard/history"];
     "Mod+Period".action.spawn = ["vicinae" "vicinae://extensions/vicinae/vicinae/search-emojis"];
 
@@ -63,16 +63,15 @@
     "Mod+8".action = focus-workspace 8;
     "Mod+9".action = focus-workspace 9;
 
-    # waiting for sodiboo/niri-flake#1018 to be fixed
-    "Mod+Shift+1".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "1"];
-    "Mod+Shift+2".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "2"];
-    "Mod+Shift+3".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "3"];
-    "Mod+Shift+4".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "4"];
-    "Mod+Shift+5".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "5"];
-    "Mod+Shift+6".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "6"];
-    "Mod+Shift+7".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "7"];
-    "Mod+Shift+8".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "8"];
-    "Mod+Shift+9".action.spawn = ["niri" "msg" "action" "move-column-to-workspace" "9"];
+    "Mod+Shift+1".action.move-window-to-workspace = 1;
+    "Mod+Shift+2".action.move-window-to-workspace = 2;
+    "Mod+Shift+3".action.move-window-to-workspace = 3;
+    "Mod+Shift+4".action.move-window-to-workspace = 4;
+    "Mod+Shift+5".action.move-window-to-workspace = 5;
+    "Mod+Shift+6".action.move-window-to-workspace = 6;
+    "Mod+Shift+7".action.move-window-to-workspace = 7;
+    "Mod+Shift+8".action.move-window-to-workspace = 8;
+    "Mod+Shift+9".action.move-window-to-workspace = 9;
 
     "Mod+Z".action = toggle-overview;
   };
