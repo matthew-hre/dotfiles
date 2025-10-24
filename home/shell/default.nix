@@ -1,17 +1,23 @@
-{...}: {
-  imports = [
-    ./fish.nix
-    ./ghostty.nix
-  ];
+{
+  config,
+  lib,
+  ...
+}: {
+  config = lib.mkIf config.users.matthew_hre.configs.shell {
+    imports = [
+      ./fish.nix
+      ./ghostty.nix
+    ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-    BROWSER = "firefox";
-    TERMINAL = "kitty";
+    home.sessionVariables = {
+      EDITOR = "nvim";
+      BROWSER = "firefox";
+      TERMINAL = "kitty";
 
-    DELTA_PAGER = "less -R";
+      DELTA_PAGER = "less -R";
 
-    MANPAGER = "sh -c 'col -bx | bat -l man -p'";
-    MANROFFOPT = "-c";
+      MANPAGER = "sh -c 'col -bx | bat -l man -p'";
+      MANROFFOPT = "-c";
+    };
   };
 }
