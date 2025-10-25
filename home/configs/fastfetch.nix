@@ -12,7 +12,16 @@ lib.optionalAttrs osConfig.users.matthew_hre.configs.fastfetch {
     settings = {
       "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json";
       logo = {
-        source = "/home/matthew_hre/nix-config/home/fastfetch/logo_nix.txt";
+        source = ''
+            \\  \\ //
+           ==\\__\\/ //
+             //   \\//
+          ==//     //==
+           //\\___//
+          // /\\  \\==
+            // \\  \\
+        '';
+        type = "data";
         color = {
           "1" = "blue";
         };
