@@ -58,17 +58,8 @@
 
     home-manager.users.matthew_hre = {
       imports = [
-        ./configs/bat.nix
-        ./configs/btop.nix
-        ./configs/direnv.nix
-        ./configs/fastfetch
-        ./configs/fuzzel.nix
-        ./configs/garbage.nix
-        ./configs/git.nix
-        ./configs/ssh.nix
-        ./configs/vicinae.nix
-        ./editors/helix
-        ./editors/nvf
+        ./configs
+        ./editors
         ./shell
         ./wayland
       ];
