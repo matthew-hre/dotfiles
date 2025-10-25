@@ -58,6 +58,13 @@ in {
     };
   };
 
+  services.hibernation = {
+    enable = true;
+    swapDeviceUUID = "773e93e2-0dd1-48f1-95a8-7f8acb4fb177";
+    lidAction = "suspend-then-hibernate";
+    hibernateDelay = "30m";
+  };
+
   networking.hostName = "toad";
 
   # This value determines the NixOS release from which the default

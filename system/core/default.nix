@@ -2,6 +2,7 @@
   imports = [
     ../nix
     ./security.nix
+    ../services/hibernation.nix
   ];
   time.timeZone = "America/Edmonton";
 
