@@ -15,6 +15,10 @@ in {
         enableGnomeKeyring = true;
       };
 
+      "polkit-1" = lib.mkIf toad {
+        fprintAuth = true;
+      };
+
       greetd.enableGnomeKeyring = true;
       login.enableGnomeKeyring = true;
     };
