@@ -55,7 +55,7 @@ in {
           cliphist
           hyprpicker
 
-          networkmanagerappat
+          networkmanagerapplet
           brightnessctl
 
           xwayland-satellite

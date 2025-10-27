@@ -9,7 +9,7 @@
     command = [command];
   };
 in {
-  imports = lib.optionals config.home.wayland.niri.enable [
+  imports = [
     inputs.niri.homeModules.niri
     ./binds.nix
     ./rules.nix
