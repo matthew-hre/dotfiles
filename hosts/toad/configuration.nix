@@ -24,38 +24,25 @@ in {
     "${system}/services/power.nix"
   ];
 
-  users.matthew_hre = {
-    enable = true;
-    configs = {
-      bat = true;
-      btop = true;
-      direnv = true;
-      fastfetch = true;
-      fuzzel = true;
-      garbage = true;
-      git = true;
-      ssh = true;
-      vicinae = true;
-      helix = true;
-      nvf = true;
+  home-manager.users.matthew_hre.home = {
+    bat.enable = true;
+    btop.enable = true;
+    direnv.enable = true;
+    fastfetch.enable = true;
+    fuzzel.enable = true;
+    garbage.enable = true;
+    git.enable = true;
+    ssh.enable = true;
+    vicinae.enable = true;
 
-      shell = {
-        enable = true;
-        fish = true;
-        ghostty = true;
-      };
+    editors.helix.enable = true;
+    editors.nvf.enable = true;
+    editors.vscode.enable = true;
 
-      wayland = {
-        enable = true;
-        dunst = true;
-        gtk = true;
-        hypridle = true;
-        hyprlock = true;
-        niri = true;
-        waybar = true;
-        wlsunset = true;
-      };
-    };
+    shell.fish.enable = true;
+    shell.ghostty.enable = true;
+
+    wayland.enable = true;
   };
 
   services.hibernation = {
