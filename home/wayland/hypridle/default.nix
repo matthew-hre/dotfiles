@@ -34,10 +34,7 @@ in {
             timeout = timeout + 10;
             on-timeout = lock;
           }
-          {
-            timeout = 1800; # 30 mins
-            on-timeout = "systemctl hibernate";
-          }
+          # using system-level suspend-then-hibernate via logind
         ];
       };
     };

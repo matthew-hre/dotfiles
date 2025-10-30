@@ -13,6 +13,7 @@ in {
     ./hypridle
     ./hyprlock
     ./niri
+    ./quickshell
     ./waybar
     ./wlsunset
   ];

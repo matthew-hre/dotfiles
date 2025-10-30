@@ -36,7 +36,7 @@ in {
         spawn-at-startup = [
           (makeCommand "swww-daemon")
           (makeCommand "NetworkManager")
-          (makeCommand "waybar")
+          (makeCommand "qs")
           {command = ["wl-paste" "--watch" "cliphist" "store"];}
         ];
 

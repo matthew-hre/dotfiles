@@ -43,6 +43,8 @@ in {
     shell.ghostty.enable = true;
 
     wayland.enable = true;
+    wayland.waybar.enable = false;
+    wayland.quickshell.enable = true;
   };
 
   services.hibernation = {

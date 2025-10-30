@@ -26,6 +26,11 @@
 
     nvf.url = "github:notashelf/nvf";
 
+    quickshell = {
+      url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     solaar = {
       url = "github:Svenum/Solaar-Flake/main";
       inputs.nixpkgs.follows = "nixpkgs";
